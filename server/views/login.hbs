@@ -1,0 +1,28 @@
+<html>
+<header>
+  <script src="//cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>
+</header>
+<body>
+  <div class="login">
+    <input id="username" type="text" placeholder="用户名"/>
+    <input id="password" type="text" placeholder="密码"/>
+    <button id="login">登陆</button>
+  </div>
+
+  <script>
+    $('#login').click(function(){
+      $.ajax({
+        url: '/login',
+        data: {
+          username: $('#username').val(),
+          password: $('#password').val()
+        },
+        type: 'POST',
+        success: function(data){
+          console.log(data.message);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
