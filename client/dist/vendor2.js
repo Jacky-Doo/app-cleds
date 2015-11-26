@@ -47,21 +47,22 @@
 
 	'use strict';
 
-	__webpack_require__(14);
+	__webpack_require__(33);
+
 
 
 /***/ },
 
-/***/ 14:
+/***/ 33:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(15);
+	__webpack_require__(34);
 	module.exports = angular;
 
 
 /***/ },
 
-/***/ 15:
+/***/ 34:
 /***/ function(module, exports) {
 
 	/**

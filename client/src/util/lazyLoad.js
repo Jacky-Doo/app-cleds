@@ -5,7 +5,10 @@ exports.lazyLoadModule = function(module){
     'lazyLoad': ['$q', '$ocLazyLoad', function($q, $ocLazyLoad){
       var deferred = $q.defer();
       require.ensure([], function (require) {
-        var mod = require('../modules/' + module);
+        debugger;
+        console.log(module);
+        debugger;
+        var mod = require('../modules/' + module + '.js');
         $ocLazyLoad.load({
           name: mod.name,
         });

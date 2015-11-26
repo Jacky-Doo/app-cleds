@@ -1,2 +1,52 @@
-<h1>home page</h1>
-<a ui-sref="biz1">biz1</a>
+<script type ="text/ng-template" id="homeTpl">
+  <div class="home-tpl">
+    <section class="banner"></section>
+    <section class="custom-nav" ng-controller="CustomNavController">
+      <header>
+        <md-button class="md-btn-full btn-right custom-btn" ng-click="header.switch()">
+          专属定制
+          <md-icon md-svg-src="{{header.svgSrc}}" class="btn-right-icon custom-btn-icon"></md-icon>
+        </md-button>
+      </header>
+      <div class="custom-nav-content" ng-show="content.isShow">
+        <section ng-repeat="item in content.items">
+          <md-divider class="divider"></md-divider>
+          <md-button class="md-btn-full btn-right" ng-click="content.switch($index)">
+            {{item.title}}
+            <md-icon md-svg-src="{{item.svgSrc}}" class="btn-right-icon"></md-icon>
+          </md-button>
+          <ul ng-show="item.isShow">
+            <li ng-repeat="option in item.options">
+              <md-button class="item-btn md-btn-full">
+                {{option}}
+              </md-button>
+            </li>
+          </ul>
+        </section>
+        <md-divider class="divider"></md-divider>
+        <div>
+          <md-button class="md-btn-full btn-right">
+            什么是专属定制
+            <md-icon md-svg-src="{{whatSvgSrc}}" class="btn-right-icon"></md-icon>
+          </md-button>
+        </div>
+      </div>
+    </section>
+
+    <section class="cst-container">
+
+    </section>
+
+    <section class="desc">
+      <div>
+        <h2>自由打造专属设计</h2>
+        <h1>Cleds制造</h1>
+        <p>Cleds这项服务让你能够按照心中所想,</p>
+        <p>精确定制你的专属LED照明产品。添加你的个性元素,从零设计,或优化你的</p>
+        <p>性能配置,丰富可能任你发掘。释放你的创意,</p>
+        <p>发掘Cleds卓越的个性化服务。</p>
+      </div>
+    </section>
+  </div>
+</script>
+
