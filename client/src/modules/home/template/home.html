@@ -1,40 +1,120 @@
 <script type ="text/ng-template" id="homeTpl">
   <div class="home-tpl">
     <section class="banner"></section>
-    <section class="custom-nav" ng-controller="CustomNavController">
-      <header>
-        <md-button class="md-btn-full btn-right custom-btn" ng-click="header.switch()">
-          专属定制
-          <md-icon md-svg-src="{{header.svgSrc}}" class="btn-right-icon custom-btn-icon"></md-icon>
-        </md-button>
-      </header>
-      <div class="custom-nav-content" ng-show="content.isShow">
-        <section ng-repeat="item in content.items">
-          <md-divider class="divider"></md-divider>
-          <md-button class="md-btn-full btn-right" ng-click="content.switch($index)">
-            {{item.title}}
-            <md-icon md-svg-src="{{item.svgSrc}}" class="btn-right-icon"></md-icon>
+
+    <section class="custom-nav" ng-controller="CustomNavCtrl">
+      <accordion-item is-collapse="header.isCollapse">
+        <accordion-title class="header">
+          <md-button class="btn-full btn-right custom-btn">
+            专属定制
+            <svg-icon svg-id="{{header.svg}}" class="btn-right-icon custom-btn-icon"></svg-icon>
           </md-button>
-          <ul ng-show="item.isShow">
-            <li ng-repeat="option in item.options">
-              <md-button class="item-btn md-btn-full">
-                {{option}}
-              </md-button>
-            </li>
-          </ul>
-        </section>
-        <md-divider class="divider"></md-divider>
-        <div>
-          <md-button class="md-btn-full btn-right">
-            什么是专属定制
-            <md-icon md-svg-src="{{whatSvgSrc}}" class="btn-right-icon"></md-icon>
-          </md-button>
-        </div>
-      </div>
+        </accordion-title>
+        <accordion-content class="custom-nav-content">
+          <accordion>
+            <accordion-item ng-repeat="item in content.items" is-collapse="item.isCollapse">
+              <md-divider class="divider"></md-divider>
+              <accordion-title>
+                <md-button class="btn-full btn-right">
+                  {{item.title}}
+                  <svg-icon svg-id="{{item.svg}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+                </md-button>
+              </accordion-title>
+              <accordion-content>
+                <ul>
+                  <li ng-repeat="option in item.options">
+                    <md-button class="item-btn btn-full" ui-sref="screen">
+                      {{option}}
+                    </md-button>
+                  </li>
+                </ul>
+              </accordion-content>
+            </accordion-item>
+          </accordion>
+          <div>
+            <md-divider class="divider"></md-divider>
+            <md-button class="btn-full btn-right">
+              什么是专属定制
+              <svg-icon svg-id="{{whatSvg}}" class="btn-right-icon"></svg-icon>
+            </md-button>
+          </div>
+        </accordion-content>
+      </accordion-item>
     </section>
 
     <section class="cst-container">
-
+      <div class="cst-header">
+        <h1>立即开始</h1>
+        <p>准备好缔造你的专属烙印了吗？Cleds专属定制畅销精品，</p>
+        <p>选择其一开始定制之旅</p>
+      </div>
+      <div layout="row" layout-align="space-around center" layout-wrap class="cst-content">
+        <md-card flex="30" class="card pdt-card">
+          <img ng-src="{{pdtCard.imgSrc}}" class="card-image">
+          <div class="card-content">
+            <div class="card-title">
+                <span>{{pdtCard.title}}</span>
+            </div>
+            <div class="card-desc">
+              <p>{{pdtCard.desc}}</p>
+            </div>
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button>Action 1</md-button>
+              <md-button>Action 2</md-button>
+            </md-card-actions>
+          </div>
+        </md-card>
+        <md-card flex="30" class="card pdt-card">
+          <img ng-src="{{pdtCard.imgSrc}}" class="card-image">
+          <div class="card-content">
+            <div class="card-title">
+              <span>{{pdtCard.title}}</span>
+            </div>
+            <div class="card-desc">
+              <p>{{pdtCard.desc}}</p>
+            </div>
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button class="md-icon-button" aria-label="Favorite">
+                <md-icon md-svg-icon="{{pdtCard.icon.favoriteUrl}}"></md-icon>
+              </md-button>
+              <md-button class="md-icon-button" aria-label="Share">
+                <md-icon md-svg-icon="{{pdtCard.icon.shareUrl}}"></md-icon>
+              </md-button>
+              <md-button class="md-raised md-warn">立即定制</md-button>
+            </md-card-actions>
+          </div>
+        </md-card>
+        <md-card flex="30" class="card pdt-card">
+          <img ng-src="{{pdtCard.imgSrc}}" class="card-image">
+          <div class="card-content">
+            <div class="card-title">
+              <span>{{pdtCard.title}}</span>
+            </div>
+            <div class="card-desc">
+              <p>{{pdtCard.desc}}</p>
+            </div>
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button>Action 1</md-button>
+              <md-button>Action 2</md-button>
+            </md-card-actions>
+          </div>
+        </md-card>
+        <md-card flex="30" class="card pdt-card">
+          <img ng-src="{{pdtCard.imgSrc}}" class="card-image">
+          <div class="card-content">
+            <div class="card-title">
+              <span>{{pdtCard.title}}</span>
+            </div>
+            <div class="card-desc">
+              <p>{{pdtCard.desc}}</p>
+            </div>
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button>Action 1</md-button>
+              <md-button>Action 2</md-button>
+            </md-card-actions>
+          </div>
+        </md-card>
+      </div>
     </section>
 
     <section class="desc">

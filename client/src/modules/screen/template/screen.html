@@ -1,0 +1,96 @@
+<script type ="text/ng-template" id="screenTpl">
+  <div class="screen-tpl" layout="row" ng-controller="screenNavCtrl">
+    <section flex="20" layout="column" class="screen-nav">
+      <div class="kinds">
+        <md-input-container>
+          <label>site</label>
+          <md-select ng-model="screen.site.value">
+            <md-option ng-repeat="site in screen.sites" value="{{site.value}}">
+              {{site.name}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <accordion-item is-collapse="screen.kind.isCollapse">
+          <accordion-title>
+            <md-button class="btn-full btn-right title">
+              种类
+              <svg-icon svg-id="{{screen.kind.svg}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+            </md-button>
+          </accordion-title>
+          <accordion-content>
+            <select-group layout="row" layout-wrap selected-value="screen.kind.value">
+              <select-item ng-repeat="kind in screen.kinds" flex="50" value="{{kind.value}}">
+                <md-button ng-class="{slected: kind.value==screen.kind.value}">{{kind.name}}</md-button>
+              </select-item>
+            </select-group>
+          </accordion-content>
+        </accordion-item>
+      </div>
+      <md-divider></md-divider>
+      <accordion-item is-collapse="screen.color.isCollapse">
+        <accordion-title>
+          <md-button class="btn-full btn-right title">
+            颜色
+            <svg-icon svg-id="{{screen.color.svg}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+          </md-button>
+        </accordion-title>
+        <accordion-content>
+          <select-group layout="row" layout-wrap selected-value="screen.color.value">
+            <select-item ng-repeat="color in screen.colors" value="{{color.value}}">
+              <md-button class="md-fab md-mini"  ng-class="{slected: color.value==screen.color.value}" aria-label="t"></md-button>
+            </select-item>
+          </select-group>
+        </accordion-content>
+      </accordion-item>
+      <md-divider></md-divider>
+      <accordion-item is-collapse="screen.power.isCollapse">
+        <accordion-title>
+          <md-button class="btn-full btn-right title">
+            功率
+            <svg-icon svg-id="{{screen.power.svg}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+          </md-button>
+        </accordion-title>
+        <accordion-content>
+          <select-group layout="row" layout-wrap selected-value="screen.power.value">
+            <select-item ng-repeat="power in screen.powers" flex="50" value="{{power.value}}">
+              <md-button ng-class="{slected: power.value==screen.power.value}">{{power.name}}</md-button>
+            </select-item>
+          </select-group>
+        </accordion-content>
+      </accordion-item>
+      <md-divider></md-divider>
+      <accordion-item is-collapse="screen.price.isCollapse">
+        <accordion-title>
+          <md-button class="btn-full btn-right title">
+            价格
+            <svg-icon svg-id="{{screen.price.svg}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+          </md-button>
+        </accordion-title>
+        <accordion-content>
+          <select-group layout="row" layout-wrap selected-value="screen.price.value">
+            <select-item ng-repeat="price in screen.prices" flex="50" value="{{price.value}}">
+              <md-button ng-class="{slected: price.value==screen.price.value}">{{price.name}}</md-button>
+            </select-item>
+          </select-group>
+        </accordion-content>
+      </accordion-item>
+      <md-divider></md-divider>
+    </section>
+    <section class="content" flex="80">
+      <div class="info">
+        <div class="title">
+          <span class="params">{{screen.site.name}}</span>Cleds专属定制<span class="params">{{screen.kind.name}}</span>
+        </div>
+        <div class="detial">
+          <span>{{screen.color.name}}</span>
+          <span>{{screen.power.name}}</span>
+          <span>{{screen.price.name}}</span>
+        </div>
+      </div>
+      <div class="pdt-list">
+
+      </div>
+    </section>
+  </div>
+</script>
+

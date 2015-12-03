@@ -1,0 +1,24 @@
+<script type ="text/ng-template" id="knowledgeTpl">
+  <div class="knowledge-tpl" layout="row" ng-controller="KnowledgeCtrl">
+    <div class="kl-nav" layout="column" flex="30">
+      <div class="nav-header" flex="100">知识库</div>
+      <md-divider></md-divider>
+      <select-group selected-value="nav.selectedItem" class="nav-content" flex="100" layout="column">
+        <select-item ng-repeat="li in nav.list" value="{{li.value}}">
+          <md-button ng-class="{selected: li.selected}" class="btn-full li" ui-sref="{{li.url}}">
+            {{li.name}}&nbsp;({{li.num}})
+          </md-button>
+        </select-item>
+      </select-group>
+    </div>
+    <div class="kl-content" layout="column" flex="70">
+      <div class="header">
+        知识库&nbsp;|&nbsp;{{nav.selectedItem}}
+      </div>
+      <div class="content">
+        <ui-view></ui-view>
+      </div>
+    </div>
+  </div>
+</script>
+

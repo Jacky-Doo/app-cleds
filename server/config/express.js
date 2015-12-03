@@ -42,17 +42,17 @@ module.exports = function(db){
   app.disable('x-powered-by');
   app.use(express.static(path.join(root, env.publicDir)));  //提供静态文件访问功能
 
+  //加载所有model文件，mongoose.model()函数会执行模型注册，所以除了service需要require,其它都无需require model文件
+  //模型会在路由文件加载后被调用所以必须要同步加载，且在路由文件之前
+  var files = glob.sync(path.join(root, env.modelsPath));
+  files.forEach(function(file){
+    require(file);
+  });
+
   //加载所有route文件，并执行
   glob(path.join(root, env.routesPath), function(err, files){
     files.forEach(function(file){
       require(file)(app);
-    });
-  });
-
-  //加载所有model文件，mongoose.model()函数会执行模型注册，所以除了service需要require,其它都无需require model文件
-  glob(path.join(root, env.modelsPath), function(ree, files){
-    files.forEach(function(file){
-      require(file);
     });
   });
 

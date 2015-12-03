@@ -33,14 +33,15 @@ module.exports = {
 
   module: {
     loaders: [
-      //{test: /\.html$/, loader: 'html'},
       {test: /\.html$/, loader: 'ng-cache'},
       {test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},  //默认require的css文件通常为库样式，比较大单独引入
       {test: /\.scss$/, loader: 'style-loader!css-loader!autoprefixer-loader!sass-loader'}, //less scss的样式文件比较小，以style标签形式引入
-      {test: /\.less/, loader: 'style-loader!css-loader!autoprefixer-loader!less-loader'}, //less scss的样式文件比较小，以style标签形式引入
+      {test: /\.less$/, loader: 'style-loader!css-loader!autoprefixer-loader!less-loader'}, //less scss的样式文件比较小，以style标签形式引入
       {test: /\.png$/, loader: 'url-loader?limit=100000&mimetype=image/png'},
       {test: /\.jpg$/, loader: 'file-loader'},
-      {test: /\.(eot|woff|ttf|svg|woff2)$/, loader: "file-loader"}
+      //{ test: /\.svg$/, loader: 'svg-loader' },
+      { test: /\.svg$/, loader: 'url-loader?mimetype=image/svg+xml&limit=50&name=[hash:6].[ext]' },
+      //{test: /\.(eot|woff|ttf|svg|woff2)$/, loader: "file-loader"}
     ],
     noParse: [],
   },

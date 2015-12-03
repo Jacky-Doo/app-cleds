@@ -1,60 +1,61 @@
 'use strict';
 
-var svgAdd = require('../../common/img/ic_add_black_24px.svg');
-var svgRemove = require('../../common/img/ic_remove_black_24px.svg');
-var svgRight = require('../../common/img/ic_chevron_right_black_24px.svg');
-
-var customeNavController = ['$scope',
-  function($scope){
+var CustomNavCtrl = ['$scope', 'sprite', '$interval',
+  function($scope, sprite, $interval){
     /**
      * $scope.header
      */
     $scope.header = {
-      svgSrc: svgRemove,
+      svg: sprite.remove,
+      isCollapse: false
     }
-    $scope.header.switch = function(){
-      if($scope.header.svgSrc == svgAdd){
-        $scope.header.svgSrc = svgRemove;
-        $scope.content.isShow = true;
+    $scope.$watch('header.isCollapse', function(newValue, oldValue, scope){
+      if(newValue){
+        scope.header.svg = sprite.add;
       } else {
-        $scope.header.svgSrc = svgAdd;
-        $scope.content.isShow = false;
+        scope.header.svg = sprite.remove;
       }
-    }
+    });
     /**
-     * $scope.items && $scope.content
+     * $scope.content
      */
-    $scope.content = {
-      isShow: true,
-    };
+    $scope.content = {};
     $scope.content.items = [
       {
         title: '室内灯具',
-        options: ['筒灯', '球泡灯', '栅格灯']
+        options: ['筒灯', '球泡灯', '栅格灯'],
+        isCollapse: false
       },
       {
         title: '室外灯具',
-        options: ['路灯', '太阳能路灯']
+        options: ['路灯', '太阳能路灯'],
+        isCollapse: true
       }
     ];
-    $scope.content.items.forEach(function(item){
-      item.svgSrc = svgAdd;
-    });
-    $scope.content.items[0].svgSrc = svgRemove;
-    $scope.content.items[0].isShow = true;
-    $scope.content.switch = function(i){
-      var svgSrc = $scope.content.items[i].svgSrc
-      $scope.content.items.forEach(function(item){
-        item.svgSrc = svgAdd;
-        item.isShow = false;
-      });
-      if(svgSrc == svgAdd){
-        $scope.content.items[i].svgSrc = svgRemove;
-        $scope.content.items[i].isShow = true;
+    $scope.$watch('content.items', function(newValue, oldValue, scope){
+      scope.content.items.forEach(function(item){
+        if(item.isCollapse){
+          item.svg = sprite.add;
+        } else {
+          item.svg = sprite.remove;
+        }
+      })
+    }, true);
+    $scope.whatSvg = sprite.right;
+    /**
+     * pdtCard
+     */
+    var imgSrc = require('../img/banner1.jpg');
+    $scope.pdtCard = {
+      imgSrc : imgSrc,
+      title: '雷克照明MR16射灯',
+      desc: '雷克照明MR16射灯雷克照明MR16射灯雷克照明MR16射灯',
+      icon: {
+        favoriteUrl: sprite.favorite,
+        shareUrl : sprite.share
       }
     }
-    $scope.whatSvgSrc = svgRight;
   }
 ]
 
-module.exports = customeNavController;
+module.exports = CustomNavCtrl;

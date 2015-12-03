@@ -1,19 +1,30 @@
 'use strict';
 var gulp = require('gulp');
+var path =require('path');
 var gutil = require('gulp-util');
 var webpack = require('webpack');
 var WebpackDevServer = require("webpack-dev-server");
 var nodemon = require('nodemon');
 var clean = require('gulp-clean');
 var runSequence = require('run-sequence');
+var svgSymbols = require('gulp-svg-symbols');
 
 var webpackConfig = Object.create(require('./webpack.config.js'));
 var webpackDevPort = 8080;
+var srcPath = './client/src';
 
-
+/**
+ * @description: 常用独立gulp task
+ */
 gulp.task('clean', function(){
   return gulp.src(['client/dist'], {read: true})
     .pipe(clean());
+});
+
+gulp.task('svg-sprite', function () {
+  return gulp.src('client/src/modules/common/assets/svg/*.svg')
+    .pipe(svgSymbols())
+    .pipe(gulp.dest('client/src/modules/common/assets/'));
 });
 
 /**
@@ -23,6 +34,7 @@ gulp.task('clean', function(){
  * @tips: webpack-dev-server只在内存中重新构建文件，所以node服务器不会实时更新，
  *   需要用webpack-dev-server查看页面，node-server:dev只是提供API；
  */
+
 gulp.task("webpack-dev-server", function(callback) {
   webpackConfig.devtool = "eval";
   webpackConfig.debug = true;

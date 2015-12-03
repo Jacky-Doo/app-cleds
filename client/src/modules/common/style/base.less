@@ -1,0 +1,62 @@
+@import "util.less";
+
+*{
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+}
+li{
+  list-style:none;
+}
+body{
+  min-width: 1200px;
+}
+
+.clearfix::after{
+  content: '.';
+  display: block;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+}
+
+.btn-reset{
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+.btn-full{
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  width: 100%;
+}
+.btn-right{
+  text-align: left;
+  padding-right: 10px;
+  .btn-right-icon{
+    position: relative;
+    top: 10px;
+    float: right;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.card{
+  .card-content{
+    padding: 5px;
+  }
+  .card-title{
+    font-size: 17px;
+    line-height: 25px;
+  }
+  .card-desc{
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+
+

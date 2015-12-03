@@ -1,0 +1,56 @@
+@import "../../common/style/util.less";
+
+.screen-tpl{
+  .screen-nav{
+    margin: 50px 0 50px 30px;
+    font-size: 12px;
+    color: @medium-grey;
+    max-width: 230px;
+    .title{
+      padding-left: 8px;
+      font-size: 16px;
+      color: @grey;
+    }
+    .kinds{
+      md-input-container {
+        padding-bottom: 0;
+        md-select-value {
+          font-size: 24px;
+          text-align: center;
+          color: @grey;
+        }
+      }
+
+    }
+    .colors{
+      button{
+        margin: 4px 6px;
+      }
+    }
+    .powers{
+      button{
+        margin: 0 8px;
+      }
+    }
+  }
+  .content{
+    .info{
+      margin: 50px 0 5px 100px;
+      .title{
+        font-size: 26px;
+        color: @grey;
+        .params{
+          text-decoration: underline;
+          color: green;
+        }
+      }
+    }
+  }
+}
+
+
+
+.slected {
+  background: yellow !important;
+  border: yellow !important;
+}

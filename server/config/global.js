@@ -3,6 +3,7 @@
 module.exports = function(){
   global._ = require('lodash');
   global.mongoose = require('mongoose');
+  global.Schema = global.mongoose.Schema;
   global.env = require('./env');  //因为env中使用了global._,不能先加载./env.js文件
   global.logger = require('../service/logger');  //winston logger对象
   global.passport = require('../service/passport'); //passport登陆验证对象
