@@ -11,7 +11,7 @@ var all = {
   publicDir: '../client/dist',
   routesPath: 'routes/*.js',
   modelsPath: 'models/*.js',
-  db: 'mongodb://localhost/meanjs-dev',
+  db: 'mongodb://localhost/app-cleds',
   secret: 'my secret',
   sessionCollection: 'sessions',
   maxAge: 60000,

@@ -1,7 +1,7 @@
 'use strict';
 
-var screenNavCtrl = ['$scope', 'sprite',
-  function($scope, sprite){
+var screenNavCtrl = ['$scope', 'Sprite',
+  function($scope, Sprite){
     $scope.v = 'nihao';
     $scope.screen = {};
     var screen = $scope.screen;
@@ -28,7 +28,7 @@ var screenNavCtrl = ['$scope', 'sprite',
       value: 0,
       name: '',
       isCollapse: false,
-      svg: sprite.remove
+      svg: Sprite.remove
     }
     screen.kinds = [
       {'name': '筒灯', 'value': 0},
@@ -37,9 +37,9 @@ var screenNavCtrl = ['$scope', 'sprite',
     ]
     $scope.$watch('screen.kind.isCollapse', function(newValue, oldValue, scope){
       if(newValue){
-        scope.screen.kind.svg = sprite.add;
+        scope.screen.kind.svg = Sprite.add;
       } else {
-        scope.screen.kind.svg = sprite.remove;
+        scope.screen.kind.svg = Sprite.remove;
       }
     });
     $scope.$watch('screen.kind.value', function(newValue, oldValue, scope){
@@ -55,7 +55,7 @@ var screenNavCtrl = ['$scope', 'sprite',
     screen.color = {
       value: 0,
       isCollapse: false,
-      svg: sprite.remove
+      svg: Sprite.remove
     };
     screen.colors = [
       {'name': 'className1', value: 0},
@@ -69,9 +69,9 @@ var screenNavCtrl = ['$scope', 'sprite',
     ];
     $scope.$watch('screen.color.isCollapse', function(newValue, oldValue, scope){
       if(newValue){
-        scope.screen.color.svg = sprite.add;
+        scope.screen.color.svg = Sprite.add;
       } else {
-        scope.screen.color.svg = sprite.remove;
+        scope.screen.color.svg = Sprite.remove;
       }
     });
     $scope.$watch('screen.color.value', function(newValue, oldValue, scope){
@@ -87,7 +87,7 @@ var screenNavCtrl = ['$scope', 'sprite',
     screen.power = {
       value: 0,
       isCollapse: false,
-      svg: sprite.remove
+      svg: Sprite.remove
     };
     screen.powers =[
       {'name': '1W~3W', value: 0},
@@ -99,9 +99,9 @@ var screenNavCtrl = ['$scope', 'sprite',
     ]
     $scope.$watch('screen.power.isCollapse', function(newValue, oldValue, scope){
       if(newValue){
-        scope.screen.power.svg = sprite.add;
+        scope.screen.power.svg = Sprite.add;
       } else {
-        scope.screen.power.svg = sprite.remove;
+        scope.screen.power.svg = Sprite.remove;
       }
     });
     $scope.$watch('screen.power.value', function(newValue, oldValue, scope){
@@ -117,7 +117,7 @@ var screenNavCtrl = ['$scope', 'sprite',
     screen.price = {
       value: 0,
       isCollapse: false,
-      svg: sprite.remove
+      svg: Sprite.remove
     };
     screen.prices =[
       {'name': '50元以下', value: 0},
@@ -127,9 +127,9 @@ var screenNavCtrl = ['$scope', 'sprite',
     ]
     $scope.$watch('screen.price.isCollapse', function(newValue, oldValue, scope){
       if(newValue){
-        scope.screen.price.svg = sprite.add;
+        scope.screen.price.svg = Sprite.add;
       } else {
-        scope.screen.price.svg = sprite.remove;
+        scope.screen.price.svg = Sprite.remove;
       }
     });
     $scope.$watch('screen.price.value', function(newValue, oldValue, scope){

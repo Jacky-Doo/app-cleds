@@ -7,22 +7,22 @@
     <md-input-container class="type">
       <label>文档类型</label>
       <md-select ng-model="dc.type">
-        <md-option ng-repeat="type in dc.types" value="{{type}}">
-          {{type}}
+        <md-option ng-repeat="item in dc.types track by $index" value="{{item}}">
+          {{item.name}}
         </md-option>
       </md-select>
     </md-input-container>
     <md-input-container class="keys">
       <label>关键字</label>
-      <input ng-model="dc.keys">
+      <input ng-model="dc.keysStr">
     </md-input-container>
     <div class="desc">
       <p>文档简介</p>
       <textarea rows="6" ng-model="dc.desc" ></textarea>
     </div>
     <md-input-container class="file">
-      <input ng-model='dc.file' type="file" aria-label="true"/>
+      <input type="file" nv-file-select uploader="Uploader" aria-label="true"/><br/>
     </md-input-container>
-    <md-button class="md-raised md-primary submit" ng-click="dc.submit()">上传文档</md-button>
+    <md-button class="md-raised md-primary submit" ng-click="dc.addDc()">上传文档</md-button>
   </div>
 </script>

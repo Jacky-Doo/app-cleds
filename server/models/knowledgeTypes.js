@@ -1,7 +1,7 @@
 'use strict';
 
 var KnowledgeTypesSchema = new Schema({
-  types: String,
+  name: String,
 });
 
 module.exports = mongoose.model('KnowledgeTypes', KnowledgeTypesSchema);

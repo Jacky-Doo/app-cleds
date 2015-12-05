@@ -1,19 +1,19 @@
 'use strict';
 
-var CustomNavCtrl = ['$scope', 'sprite', '$interval',
-  function($scope, sprite, $interval){
+var CustomNavCtrl = ['$scope', 'Sprite', '$interval',
+  function($scope, Sprite, $interval){
     /**
      * $scope.header
      */
     $scope.header = {
-      svg: sprite.remove,
+      svg: Sprite.remove,
       isCollapse: false
     }
     $scope.$watch('header.isCollapse', function(newValue, oldValue, scope){
       if(newValue){
-        scope.header.svg = sprite.add;
+        scope.header.svg = Sprite.add;
       } else {
-        scope.header.svg = sprite.remove;
+        scope.header.svg = Sprite.remove;
       }
     });
     /**
@@ -35,13 +35,13 @@ var CustomNavCtrl = ['$scope', 'sprite', '$interval',
     $scope.$watch('content.items', function(newValue, oldValue, scope){
       scope.content.items.forEach(function(item){
         if(item.isCollapse){
-          item.svg = sprite.add;
+          item.svg = Sprite.add;
         } else {
-          item.svg = sprite.remove;
+          item.svg = Sprite.remove;
         }
       })
     }, true);
-    $scope.whatSvg = sprite.right;
+    $scope.whatSvg = Sprite.right;
     /**
      * pdtCard
      */
@@ -51,8 +51,8 @@ var CustomNavCtrl = ['$scope', 'sprite', '$interval',
       title: '雷克照明MR16射灯',
       desc: '雷克照明MR16射灯雷克照明MR16射灯雷克照明MR16射灯',
       icon: {
-        favoriteUrl: sprite.favorite,
-        shareUrl : sprite.share
+        favoriteUrl: Sprite.favorite,
+        shareUrl : Sprite.share
       }
     }
   }

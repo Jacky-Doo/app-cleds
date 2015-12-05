@@ -93,10 +93,10 @@ angular.module('app')
         //.accentPalette('orange');
     }
   ])
-  .factory('sprite', function(){
+  .factory('Sprite', function(){
     return require('../modules/common/service/sprite.js');
   })
-  .factory('constant', function(){
+  .factory('Constant', function(){
     return require('../modules/common/service/constant.js');
   })
 

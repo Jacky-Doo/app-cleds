@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = ['$scope', 'sprite',
-  function($scope, sprite){
+module.exports = ['$scope', 'Sprite',
+  function($scope, Sprite){
     /**
      * $scope.nav
      */

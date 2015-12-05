@@ -1,8 +1,8 @@
 'use strict';
 
-var allCtrl = ['$scope', 'sprite',
-  function($scope, sprite){
-    $scope.sprite = sprite;
+var allCtrl = ['$scope', 'Sprite',
+  function($scope, Sprite){
+    $scope.Sprite = Sprite;
   }
 ];
 

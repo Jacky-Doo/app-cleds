@@ -20,7 +20,7 @@ var knowledgeUploadCtrl = require('./controller/knowledgeUpload.js');
 var knowledgeTypes = require('./model/knowledgeTypes.js');
 var knowledgeDc = require('./model/knowledgeDc.js');
 
-angular.module('knowledge', ['ngMaterial']);
+angular.module('knowledge', ['ngMaterial', 'angularFileUpload']);
 
 angular.module('knowledge')
   .config(['$stateProvider',
@@ -40,7 +40,7 @@ angular.module('knowledge')
   ])
   .controller('KnowledgeCtrl', knowledgeCtrl)
   .controller('KnowledgeListCtrl', knowledgeListCtrl)
-  .factory('knowledgeTypes', knowledgeTypes)
-  .factory('knowledgeDc', knowledgeDc)
+  .factory('KnowledgeTypes', knowledgeTypes)
+  .factory('KnowledgeDc', knowledgeDc)
 
 module.exports = angular.module('knowledge');
