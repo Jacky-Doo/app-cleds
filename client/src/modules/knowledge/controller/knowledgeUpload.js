@@ -1,66 +1,49 @@
 'use strict';
 
-var knowledgeUpload = ['$scope', 'KnowledgeTypes', 'KnowledgeDc', 'FileUploader', 'Constant',
-  function($scope, KnowledgeTypes, KnowledgeDc, FileUploader, Constant){
+var knowledgeUpload = ['$scope', 'KnowledgeType', 'KnowledgeDc', 'FileUploader', 'Constant',
+  function($scope, KnowledgeType, KnowledgeDc, FileUploader, Constant){
     /**
      * 对象声明
      */
-    $scope.Types = new KnowledgeTypes();
-    $scope.Dc = new KnowledgeDc();
-    $scope.Uploader = new FileUploader();
-    $scope.dc = {
-      type: '',
-      title: '',
-      keys: [],
-      desc: '',
-      types: [],
-      keysStr: '',
-    };
+    $scope.type = KnowledgeType;
+    $scope.dc = KnowledgeDc;
+    $scope.Uploader = new FileUploader({url : Constant.baseUrl + '/knowledge/dc/file'});
     /**
      * 对象方法声明
      */
-    //获取所有文档类型
-    $scope.dc.getTypes = function(){
-      $scope.Types.getTypes().then(function(res){
-        $scope.dc.types = $scope.Types.types;
-        $scope.dc.type = $scope.dc.types[0];
+    $scope.Uploader.onErrorItem = function(item){
+      alert(item.file.name + '上传失败');
+    }
+    $scope.Uploader.onCompleteItem = function(item, res){
+      console.log(item);
+      console.log(res);
+      angular.extend($scope.dc.item, {size: item.file.size, mimeType: item.file.type, name: item.file.name, path: res.data.path});
+      $scope.dc.addDc($scope.dc.item).then(function(){
+        var type = $scope.dc.item._type;
+        if(typeof type == 'string'){
+          type = JSON.parse(type);
+        }
+        $scope.type.findTypeById(type._id).num++;
       });
     }
-    //提交文档
-    $scope.dc.addDc = function(){
-      if($scope.Uploader.queue.length ==1){
+    $scope.dc.submit = function(){
+      if($scope.Uploader.queue.length == 1){
         var item = $scope.Uploader.queue[0];
-        item.url = Constant.baseUrl + '/konwledge/dc/file';
         item.upload();
-        var dcData = {
-          title: $scope.dc.title,
-          typeId: $scope.dc.type.id,
-          keys: $scope.dc.keys,
-          desc: $scope.dc.desc,
-          name: item.file.name,
-          size: item.file.size,
-          format: item.file.type,
-          url: '?????',
-        };
+      } else {
+        alert('确保添加了文件，有且仅一个文件');
       }
-
-
-      //$scope.Dc.addDc({dc: dcData});
     }
     /**
      * 逻辑初始化
      */
-    $scope.dc.getTypes();
-    $scope.$watch('dc.keysStr', function(newValue, oldValue, scope){
-      scope.dc.keys = newValue.split(' ');
+    $scope.dc.item = null;
+    $scope.type.selectedName = '上传文档';
+    $scope.$watch('dc.item.keysStr', function(newValue, oldValue, scope){
+      if(newValue){
+        scope.dc.item.keys = newValue.split(' ');
+      }
     });
-
-
-    //初始化KnowledgeTypesShecma程序
-    //var types = ['技术沉淀', '技术标准', '相关专利', '相关论文', '行业动态', '失效产品', '优质产品'];
-    //types.forEach(function(item){
-    //  $scope.Types.addType({name: item});
-    //});
   }
 ];
 

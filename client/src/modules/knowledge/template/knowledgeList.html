@@ -1,20 +1,35 @@
 <script type ="text/ng-template" id="knowledgeListTpl">
+
   <ul class="dc-list">
-    <li class="dc-item">
-      <div layout="row">
-        <div class="pic" flex="20"></div>
+    <li class="dc-item" ng-repeat="item in dc.collection">
+      <div layout="row" >
+        <div class="pic" flex="20">
+          <img ng-src="{{item.imgUrl}}" alt=""/>
+        </div>
         <div flex="40" layout="column" class="info">
-          <h3>文档标题</h3>
-          <p>2015年6月7日 更新</p>
+          <h3>{{item.title}}</h3>
+          <h5>{{item.name}}</h5>
+          <p>{{item.updateDate}} 更新</p>
         </div>
-        <div flex="5" class="size">2.7M</div>
+        <div flex="5" class="size">{{item.size}}</div>
         <div flex="35" class="operate">
-          <a>在线阅读&nbsp;|</a>
-          <a>下载&nbsp;|</a>
-          <a>修改</a>
+          <section layout="row" layout-sm="column" layout-align="center center">
+            <md-button class="groupX left" ng-click="switchDesc($index)">简介</md-button>
+            <md-button class="groupX middle" ng-click="getDcFile(item._id)">下载</md-button>
+            <md-button class="groupX right" ng-click="showUpdate(item._id)">修改</md-button>
+          </section>
         </div>
+      </div>
+      <div class="row desc" ng-show="item.isShowDesc">
+        <p class="indent">文档简介</p>
+        {{item.desc}}
       </div>
       <md-divider></md-divider>
     </li>
   </ul>
+
+  <div layout="row" layout-align="center">
+    <pagination total="pagination.total" goto-page="pagination.gotoPage()" position="center" current-page="pagination.currentPage" step="pagination.step">
+    </pagination>
+  </div>
 </script>

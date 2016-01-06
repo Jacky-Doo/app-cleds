@@ -1,44 +1,79 @@
 'use strict';
 
-module.exports = ['$http', '$q', 'Constant', function($http, $q, Constant){
-  function KnowledgeDc(dcData){
-   if(dcData){
-     this.setData(dcData);
-   }
-  }
-  KnowledgeDc.prototype = {
-    setData: function(dcData){
-      angular.extend(this, dcData);
-    },
-    getDcs: function(){
-      var d = $q.defer();
-      var scope =this;
-      $http({
-        method: 'GET',
-        url: Constant.baseUrl + '/konwledge/dc',
-      }).success(function(res){
-        var dcData = res.data.dcData;
-        scope.setData({dcData: dcData});
-        d.resolve(res);
-      }).error(function(err){
-        console.log(err);
-        d.reject(err);
-      });
-      return d.promise;
-    },
-    addDc: function(dcData){
-      var d = $q.defer();
-      $http({
-        method: 'POST',
-        url: Constant.baseUrl + '/knowledge/dc',
-        data: dcData
-      }).success(function(res){
-        d.resolve(res);
-      }).error(function(err){
-        d.reject(err);
-      });
-      return d.promise;
+module.exports = ['$http', '$q', 'Constant', '$resource', function($http, $q, Constant, $resource){
+
+  var knowledgeDcRsc = $resource(
+    Constant.baseUrl + '/knowledge/dcs/:typeId',
+    {typeId: '@typeId'}
+  );
+
+  function saveFilter(item){
+    return {
+      title: item.title,
+      _type: parseType(item._type),
+      keys: item.keys,
+      desc: item.desc,
+      name: item.name,
+      size: item.size,
+      mimeType: item.mimeType,
+      path: item.path
     }
   }
+  function parseType(type){
+    if(typeof type == 'string'){
+      return JSON.parse(type);
+    } else{
+      return type;
+    }
+  }
+
+  var KnowledgeDc = {
+    item: {},
+    collection: [],
+    getDcs: function(typeId, pageId, pageSize){
+      var d = $q.defer();
+      knowledgeDcRsc.get({typeId: typeId, pageId: pageId, pageSize: pageSize}, function(res){
+        KnowledgeDc.collection = [];
+        if(res.data){
+          res.data.dcs.forEach(function(item){
+            KnowledgeDc.collection.push(item);
+          });
+        }
+        d.resolve(res);
+      }), function(err){
+        d.reject(err);
+      }
+      return d.promise;
+    },
+    addDc: function(item){
+      var d = $q.defer();
+      var data = saveFilter(item);
+      knowledgeDcRsc.save({}, {dc: data}, function(res){
+        d.resolve(res);
+      }, function(err){
+        d.reject(err);
+      });
+      return d.promise;
+    },
+    getDcFile: function(id){
+      window.open(Constant.baseUrl + '/knowledge/dc/file/' + id, '_blank', '');
+    },
+    updateDc: function(item){
+      var d = $q.defer();
+      var data = saveFilter(item);
+      knowledgeDcRsc.put({}, {dc: data}, function(res){
+        d.resolve(res);
+      }, function(err){
+        d.reject(err);
+      });
+      return d.promise;
+    },
+    findItemById: function(id){
+      for(var i=0; i<this.collection.length; i++){
+        if(this.collection[i]._id == id) return this.collection[i];
+      }
+    }
+  }
+
   return KnowledgeDc;
 }]

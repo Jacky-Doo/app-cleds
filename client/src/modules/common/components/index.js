@@ -7,3 +7,5 @@ require('./accordion/accordion.less');
 require('./svg-icon/svg-icon.js');
 require('./select-group/select-group.js');
 require('./select-group/selectgroup.less');
+require('./pagination/pagination.js');
+require('./pagination/pagination.less');

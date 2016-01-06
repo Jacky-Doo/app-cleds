@@ -39,7 +39,7 @@ module.exports = function(db){
   app.use(helmet.nosniff());
   app.use(helmet.ienoopen());
   app.disable('x-powered-by');
-  app.use(express.static(path.join(root, env.publicDir)));  //提供静态文件访问功能
+  app.use(express.static(path.join(root, env.publicDir)));  //静态页面文件
 
   //CORS跨域解决方案
   app.all('*', function(req, res, next){

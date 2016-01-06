@@ -65,23 +65,6 @@ angular.module('app')
             }]
           }
         })
-        .state('biz1', {
-          url: '/biz1',
-          template: require('../modules/biz1/template/biz1.html'),
-          resolve: {
-            foo: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad){
-              var deferred = $q.defer();
-              require.ensure([], function (require) {
-                var mod = require('../modules/biz1/biz1.js');
-                $ocLazyLoad.load({
-                  name: mod.name,
-                });
-                deferred.resolve();
-              });
-              return deferred.promise;
-            }]
-          }
-        })
 
       $urlRouterProvider.otherwise('home');
       $locationProvider.html5Mode(false);

@@ -13,6 +13,7 @@
  */
 
 var Types = mongoose.model('KnowledgeTypes');
+var Dc = mongoose.model('KnowledgeDc');
 
 module.exports = {
   /**
@@ -21,52 +22,41 @@ module.exports = {
    * @res: {
    *    code: 200|404|500,
    *    data: {
-   *      types: [{id: item._id, name: item.name}]
+   *      types: [{id: Number, name: Number, num: Number}]
    *    }
    * }
    */
   getTypes: function(req, res){
     Types.find(function(err, data){
       var resData;
-      var types = [];
-      data.forEach(function(item){
-        types.push({id: item._id, name: item.name});
-      });
-      console.log(types);
       if(err){
         resData = {code: 500, data: null,};
-      } else if(types){
-        resData = {code: 200, data: {types: types},};
+        res.json(resData);
+      } else if(data){
+        var i = 0;
+        data.forEach(function(item){
+          Dc.count({_type: item._id}, function(err, count){
+            item.num = count;
+            i++;
+            if(i == data.length){
+              resData = {code: 200, data: {types: data},};
+              res.json(resData);
+            }
+          });
+        })
       } else {
         resData = {code: 404, data: null,};
+        res.json(resData);
       }
-      res.json(resData);
-    });
-  },
-  /**
-   * @method: PUT
-   * @req: {
-   *   id: _id,
-   *   name: _name
-   * }
-   * @res: {
-   *    code: 200|404|500,
-   *    data: null,
-   *    msg: String
-   * }
-   */
-  updateType: function(req, res){
-    Types.findByIdAndUpdate(req.body.id, {$set: {name: req.body.name}}, function(err){
-      var resData = err ?
-        {code: 404, data: null, msg: '更新失败'}
-        :{code: 200, data: null , msg: '更新成功'}
-      res.json(resData);
+
     });
   },
   /**
    * @method: POST
    * @req: {
-   *   name: String
+   *   type: {
+   *     name: String,
+   *   }
    * }
    * @res: {
    *    code: 200|404|500,
@@ -81,7 +71,7 @@ module.exports = {
         resData = {code: 304, data: null, msg: '类型已存在'};
         res.json(resData);
       } else {
-        var type = new Types({name: req.body.name});
+        var type = new Types({name: req.body.name, num: 0});
         type.save(function(err) {
           resData = err ?
             {code: 404, data: null, msg: '添加失败'}

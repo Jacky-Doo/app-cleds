@@ -5,6 +5,7 @@ var gutil = require('gulp-util');
 var webpack = require('webpack');
 var WebpackDevServer = require("webpack-dev-server");
 var nodemon = require('nodemon');
+var nodeDebug = require('gulp-node-debug');
 var clean = require('gulp-clean');
 var runSequence = require('run-sequence');
 var svgSymbols = require('gulp-svg-symbols');
@@ -59,6 +60,14 @@ gulp.task('node-server:dev', function () {
   });
 });
 
+gulp.task('node-server:debug', function(){
+  gulp.src('./server/start.js')
+    .pipe(nodeDebug({
+      webPort: 3000,
+      debugBrk: false,
+    }));
+});
+
 gulp.task('dev', function(){
   runSequence('build:dev', 'node-server:dev');
 });
@@ -96,6 +105,7 @@ gulp.task('node-server', function () {
     env: { 'NODE_ENV': 'production' }
   });
 });
+
 
 gulp.task('pdt', function(){
   runSequence('webpack-build', 'node-server');
