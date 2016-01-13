@@ -50,12 +50,12 @@ angular.module('app')
         })
         .state('knowledge', {
           url: '/knowledge',
-          template: require('../modules/knowledge/template/knowledge.html'),
+          template: require('../modules/knowledge/template/index.html'),
           resolve: {
             foo: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad){
               var deferred = $q.defer();
               require.ensure([], function (require) {
-                var mod = require('../modules/knowledge/knowledge.js');
+                var mod = require('../modules/knowledge/index.js');
                 $ocLazyLoad.load({
                   name: mod.name,
                 });

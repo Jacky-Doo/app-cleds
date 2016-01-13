@@ -1,0 +1,37 @@
+<script type ="text/ng-template" id="partManageTpl">
+  <div class="kl-part-manage">
+    <div layout="row" layout-wrap layout-align="space-around center">
+      <!--<md-input-container class="model-type" flex="5">-->
+        <!--<label>零部件类型</label>-->
+        <!--<md-select>-->
+          <!--<md-option>-->
+          <!--wendang-->
+          <!--</md-option>-->
+        <!--</md-select>-->
+      <!--</md-input-container>-->
+    </div>
+    <accordion-item>
+      <accordion-title class="section-title">
+        <md-button class="btn-full btn-right">
+          规格信息
+          <svg-icon svg-id="{{Sprite.remove}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+        </md-button>
+      </accordion-title>
+      <accordion-content class="section-content">
+        <div layout="row" layout-wrap layout-align="space-around center">
+          <md-input-container class="productor" flex="45">
+            <label>生产商</label>
+            <input>
+          </md-input-container>
+          <md-input-container class="version" flex="45">
+            <label>产品型号</label>
+            <input>
+          </md-input-container>
+        </div>
+      </accordion-content>
+    </accordion-item>
+    <div layout="row" layout-align="space-around center">
+      <md-button class="md-raised md-primary submit" flex="45">确认保存</md-button>
+    </div>
+  </div>
+</script>

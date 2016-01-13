@@ -1,0 +1,51 @@
+<script type ="text/ng-template" id="indexTpl">
+  <div class="knowledge-tpl" layout="row" ng-controller="indexCtrl">
+    <div class="kl-nav" layout="column" flex="30">
+      <div class="nav-header" flex="100">知识库</div>
+      <md-divider></md-divider>
+      <select-group selected-value="type.selectedName" class="nav-content" flex="100" layout="column">
+        <select-item value="编辑实例" ui-sref="knowledge.modelManage">
+          <md-button class="btn-full li">
+            编辑实例
+          </md-button>
+        </select-item>
+        <select-item value="编辑零部件" is-selected="true" ui-sref="knowledge.partManage">
+          <md-button class="btn-full li">
+            编辑零部件
+          </md-button>
+        </select-item>
+        <select-item value="编辑文档" ui-sref="knowledge.dcUpload">
+          <md-button class="btn-full li">
+            编辑文档
+          </md-button>
+        </select-item>
+        <md-divider></md-divider>
+        <select-item value="实例产品" ui-sref="knowledge.modelList">
+          <md-button class="btn-full li">
+            实例产品
+          </md-button>
+        </select-item>
+        <select-item value="零部件模块" ui-sref="knowledge.partList">
+          <md-button class="btn-full li">
+            零部件模块
+          </md-button>
+        </select-item>
+        <md-divider></md-divider>
+        <select-item ng-repeat="item in type.collection" value="{{item.name}}" ui-sref="knowledge.dcList({typeId: item._id})">
+          <md-button class="btn-full li" >
+            {{item.name}}&nbsp;({{item.num}})
+          </md-button>
+        </select-item>
+      </select-group>
+    </div>
+    <div class="kl-content" layout="column" flex="70">
+      <div class="header">
+        知识库&nbsp;|&nbsp;{{type.selectedName}}
+      </div>
+      <div class="content">
+        <ui-view></ui-view>
+      </div>
+    </div>
+  </div>
+</script>
+

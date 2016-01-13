@@ -1,0 +1,187 @@
+<script type ="text/ng-template" id="modelManageTpl">
+  <div class="kl-model-manage">
+    <accordion-item>
+      <accordion-title class="section-title">
+        <md-button class="btn-full btn-right">
+          基本信息
+          <svg-icon svg-id="{{Sprite.remove}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+        </md-button>
+      </accordion-title>
+      <accordion-content class="section-content">
+        <div layout="row" layout-wrap layout-align="space-around center">
+          <!--<md-input-container class="model-type" flex="5">-->
+          <!--<label>文档类型</label>-->
+          <!--<md-select>-->
+          <!--<md-option>-->
+          <!--wendang-->
+          <!--</md-option>-->
+          <!--</md-select>-->
+          <!--</md-input-container>-->
+          <md-input-container class="name" flex="45">
+            <label>产品名称</label>
+            <input>
+          </md-input-container>
+        </div>
+        <div layout="row" layout-wrap layout-align="space-around center">
+          <md-input-container class="productor" flex="45">
+            <label>生产商</label>
+            <input>
+          </md-input-container>
+          <md-input-container class="version" flex="45">
+            <label>产品型号</label>
+            <input>
+          </md-input-container>
+        </div>
+        <div layout="row" layout-wrap layout-align="space-around center">
+          <md-input-container class="price" flex="45">
+            <label>价格</label>
+            <input>
+          </md-input-container>
+          <md-input-container class="desc" flex="45">
+            <label>描述</label>
+            <input>
+          </md-input-container>
+        </div>
+      </accordion-content>
+    </accordion-item>
+
+    <accordion-item>
+      <accordion-title class="section-title">
+        <md-button class="btn-full btn-right">
+          规格属性
+          <svg-icon svg-id="{{Sprite.remove}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+        </md-button>
+      </accordion-title>
+      <accordion-content class="section-content">
+        <div layout="row" layout-wrap layout-align="space-around center">
+          <md-input-container class="power-min" flex="45">
+            <label>最小功率</label>
+            <input>
+          </md-input-container>
+          <md-input-container class="power-max" flex="45">
+            <label>最大功率</label>
+            <input>
+          </md-input-container>
+        </div>
+        <div layout="row" layout-wrap layout-align="space-around center">
+          <md-input-container class="voltage-min" flex="45">
+            <label>最小电压</label>
+            <input>
+          </md-input-container>
+          <md-input-container class="voltage-max" flex="45">
+            <label>最大电压</label>
+            <input>
+          </md-input-container>
+        </div>
+        <div layout="row" layout-wrap layout-align="space-around center">
+          <md-input-container class="luminous-min" flex="45">
+            <label>最小光通量</label>
+            <input>
+          </md-input-container>
+          <md-input-container class="luminous-max" flex="45">
+            <label>最大光通量</label>
+            <input>
+          </md-input-container>
+        </div>
+        <div layout="row" layout-wrap layout-align="space-around center">
+          <md-input-container class="colorTemperature-min" flex="45">
+            <label>最小色温</label>
+            <input>
+          </md-input-container>
+          <md-input-container class="colorTemperature-max" flex="45">
+            <label>最大色温</label>
+            <input>
+          </md-input-container>
+        </div>
+        <div layout="row" layout-wrap layout-align="space-around center">
+          <md-input-container class="power-min" flex="45">
+            <label>封装方式</label>
+            <input>
+          </md-input-container>
+          <md-input-container class="power-max" flex="45">
+            <label>产品材质</label>
+            <input>
+          </md-input-container>
+        </div>
+        <div layout="row" layout-wrap layout-align="space-around center">
+          <md-input-container class="power-min" flex="45">
+            <label>炫光等级</label>
+            <input>
+          </md-input-container>
+          <md-input-container class="power-max" flex="45">
+            <label>光照颜色</label>
+            <input>
+          </md-input-container>
+        </div>
+      </accordion-content>
+    </accordion-item>
+
+    <accordion-item class="module-list">
+      <accordion-title class="section-title">
+        <md-button class="btn-full btn-right">
+          零部件列表
+          <svg-icon svg-id="{{Sprite.remove}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+        </md-button>
+      </accordion-title>
+      <accordion-content>
+        <accordion>
+          <accordion-item class="module-item">
+          <accordion-title class="module-title">
+            <md-button class="btn-full btn-right">
+              透镜模块
+              <svg-icon svg-id="{{Sprite.remove}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+            </md-button>
+          </accordion-title>
+          <accordion-content class="module-content" layout="column">
+            <div layout="row" layout-align="space-around center">
+              <md-button flex="50" class="module-btn btn-border-left">添加</md-button>
+              <md-button flex="50" class="module-btn">新建</md-button>
+            </div>
+            <div layout="row" class="instance">
+              <div flex="75" >**透镜模块</div>
+              <div flex="20" class="operate">
+                <section layout="row" layout-sm="column" layout-align="center center">
+                  <md-button class="groupX left">编辑</md-button>
+                  <md-button class="groupX right">删除</md-button>
+                </section>
+              </div>
+            </div>
+            <div layout="row" class="instance">
+              <div flex="75" >**透镜模块</div>
+              <div flex="20" class="operate">
+                <section layout="row" layout-sm="column" layout-align="center center">
+                  <md-button class="groupX left">编辑</md-button>
+                  <md-button class="groupX right">删除</md-button>
+                </section>
+              </div>
+            </div>
+          </accordion-content>
+        </accordion-item>
+          <accordion-item class="module-item">
+            <accordion-title class="module-title">
+              <md-button class="btn-full btn-right">
+                透镜模块
+                <svg-icon svg-id="{{Sprite.remove}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+              </md-button>
+            </accordion-title>
+            <accordion-content class="module-content">
+              <div layout="row" class="instance">
+                <div flex="75" >**透镜模块</div>
+                <div flex="20" class="operate">
+                  <section layout="row" layout-sm="column" layout-align="center center">
+                    <md-button class="groupX left">编辑</md-button>
+                    <md-button class="groupX right">删除</md-button>
+                  </section>
+                </div>
+              </div>
+            </accordion-content>
+          </accordion-item>
+        </accordion>
+      </accordion-content>
+    </accordion-item>
+
+    <div layout="row" layout-align="space-around center">
+      <md-button class="md-raised md-primary submit" flex="45">确认保存</md-button>
+    </div>
+  </div>
+</script>

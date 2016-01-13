@@ -1,0 +1,39 @@
+<script type ="text/ng-template" id="dcUpdateTpl">
+  <md-dialog aria-label="update">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>修改文档</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" aria-label="close" ng-click="view.closeDialog()">
+          <svg-icon svg-id="{{view.svgClose}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <div class="kl-upload md-dialog-content" layout="column">
+      <md-input-container class="title">
+        <label>标题</label>
+        <input ng-model="dc.item.title">
+      </md-input-container>
+      <md-input-container class="type">
+        <label>文档类型</label>
+        <md-select ng-model="dc.item._type">
+          <md-option ng-repeat="item in type.collection track by $index" value="{{item}}" ng-selected="($index == 1) ? true:false">
+            {{item.name}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container class="keys">
+        <label>关键字</label>
+        <input ng-model="dc.item.keysStr">
+      </md-input-container>
+      <div class="desc">
+        <p>文档简介</p>
+        <textarea rows="6" ng-model="dc.item.desc" ></textarea>
+      </div>
+      <md-input-container class="file">
+        <input type="file" nv-file-select uploader="Uploader" aria-label="true"/><br/>
+      </md-input-container>
+      <md-button class="md-raised md-primary submit" ng-click="dc.submit()">保存更改</md-button>
+    </div>
+  </md-dialog>
+</script>

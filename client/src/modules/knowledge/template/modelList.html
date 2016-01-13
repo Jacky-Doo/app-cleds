@@ -1,0 +1,58 @@
+<script type ="text/ng-template" id="modelListTpl">
+  <div class="kl-model-list">
+    <div layout="row" layout-wrap layout-align="space-around center">
+      <!--<md-input-container class="model-type" flex="5">-->
+      <!--<label>实例类型</label>-->
+      <!--<md-select>-->
+      <!--<md-option>-->
+      <!--wendang-->
+      <!--</md-option>-->
+      <!--</md-select>-->
+      <!--</md-input-container>-->
+    </div>
+    <accordion-item>
+      <accordion-title class="section-title">
+        <md-button class="btn-full btn-right">
+          实例列表
+          <svg-icon svg-id="{{Sprite.remove}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+        </md-button>
+      </accordion-title>
+      <accordion-content class="section-content">
+        <div layout="row" layout-wrap layout-align="space-around center" class="model-item">
+          <div flex="65">***LED产品</div>
+          <div flex="25" class="operate">
+            <section layout="row" layout-sm="column" layout-align="center center">
+              <md-button class="groupX left">查看</md-button>
+              <md-button class="groupX middle">修改</md-button>
+              <md-button class="groupX right">删除</md-button>
+            </section>
+          </div>
+        </div>
+        <md-divider></md-divider>
+        <div layout="row" layout-wrap class="model-info" layout-align="space-around center">
+          <div flex="35" class="model-attr">产品名称：LED射灯</div>
+          <div flex="35" class="model-attr">生产商：欧普照明</div>
+          <div flex="35" class="model-attr">功率：45w</div>
+          <div flex="35" class="model-attr">电压：56v</div>
+          <md-divider flex="100"></md-divider>
+        </div>
+
+        <div layout="row" layout-wrap layout-align="space-around center" class="model-item">
+          <div flex="65">***LED产品</div>
+          <div flex="25" class="operate">
+            <section layout="row" layout-sm="column" layout-align="center center">
+              <md-button class="groupX left">查看</md-button>
+              <md-button class="groupX middle">修改</md-button>
+              <md-button class="groupX right">删除</md-button>
+            </section>
+          </div>
+        </div>
+      </accordion-content>
+    </accordion-item>
+
+    <div layout="row" layout-align="center">
+      <pagination total="pagination.total" goto-page="pagination.gotoPage()" position="center" current-page="pagination.currentPage" step="pagination.step">
+      </pagination>
+    </div>
+  </div>
+</script>
