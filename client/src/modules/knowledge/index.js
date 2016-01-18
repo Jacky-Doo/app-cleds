@@ -8,8 +8,7 @@ require('./style/index.less');
  */
 var indexCtrl = require('./controller/index.js');
 var dcListCtrl = require('./controller/dcList.js');
-var dcUploadCtrl = require('./controller/dcUpload.js');
-var dcUpdateCtrl = require('./controller/dcUpdate.js');
+var dcManageCtrl = require('./controller/dcManage.js');
 var modelManageCtrl = require('./controller/modelManage.js');
 var partManageCtrl = require('./controller/partManage.js');
 var modelListCtrl = require('./controller/modelList.js');
@@ -17,16 +16,23 @@ var partListCtrl = require('./controller/partList.js');
 /**
  * 数据模型
  */
-var dcTypeModel = require('./model/dcType.js');
+var kTypeModel = require('./model/kType.js');
 var dcModel = require('./model/dc.js');
+var partTypeModel = require('./model/partType.js');
+var partModel = require('./model/part.js');
+/**
+ * 过滤器
+ */
+var kTypeFilter = require('./filter/kType.js');
+var fileSizeFilter = require('./filter/fileSize.js');
+var partNameFilter = require('./filter/partName.js');
 
 angular.module('knowledge', ['ngMaterial', 'angularFileUpload', 'ngResource']);
 
 angular.module('knowledge')
   .run(['$templateCache', function($templateCache) {
-    $templateCache.put('dcUploadTpl', require('./template/dcUpload.html'));
     $templateCache.put('dcListTpl', require('./template/dcList.html'));
-    $templateCache.put('dcUpdateTpl', require('./template/dcUpdate.html'));
+    $templateCache.put('dcManageTpl', require('./template/dcManage.html'));
     $templateCache.put('modelManageTpl', require('./template/modelManage.html'));
     $templateCache.put('partManageTpl', require('./template/partManage.html'));
     $templateCache.put('modelListTpl', require('./template/modelList.html'));
@@ -40,10 +46,10 @@ angular.module('knowledge')
           templateUrl: 'dcListTpl',
           controller: dcListCtrl
         })
-        .state('knowledge.dcUpload', {
-          url: '/dcUpload',
-          templateUrl: 'dcUploadTpl',
-          controller: dcUploadCtrl
+        .state('knowledge.dcManage', {
+          url: '/dcManage',
+          templateUrl: 'dcManageTpl',
+          controller: dcManageCtrl
         })
         .state('knowledge.modelManage', {
           url: '/modelManage',
@@ -63,20 +69,24 @@ angular.module('knowledge')
         .state('knowledge.partList', {
           url: '/partList',
           templateUrl: 'partListTpl',
-          contrller: partListCtrl,
+          controller: partListCtrl,
         })
     }
   ])
   //缓存contrlller，这样可以直接在模板中使用，而不用在路由中定义
   .controller('indexCtrl', indexCtrl)
   .controller('dcListCtrl', dcListCtrl)
-  .controller('dcUploadCtrl', dcUploadCtrl)
-  .controller('dcUpdateCtrl', dcUpdateCtrl)
+  .controller('dcManageCtrl', dcManageCtrl)
   .controller('modelManageCtrl', modelManageCtrl)
   .controller('partManageCtrl', partManageCtrl)
   .controller('modelListCtrl', modelListCtrl)
   .controller('partListCtrl', partListCtrl)
-  .factory('dcTypeModel', dcTypeModel)
+  .factory('kTypeModel', kTypeModel)
   .factory('dcModel', dcModel)
+  .factory('partTypeModel', partTypeModel)
+  .factory('partModel', partModel)
+  .filter('kTypeFilter', kTypeFilter)
+  .filter('fileSizeFilter', fileSizeFilter)
+  .filter('partNameFilter', partNameFilter)
 
 module.exports = angular.module('knowledge');

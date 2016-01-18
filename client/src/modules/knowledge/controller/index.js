@@ -1,9 +1,9 @@
 'use strict';
 
-module.exports = ['$scope', 'Sprite', 'dcTypeModel', '$state',
-  function($scope, Sprite, dcTypeModel, $state){
-    $scope.type = dcTypeModel;
+module.exports = ['$scope', 'Sprite', 'kTypeModel', '$state',
+  function($scope, Sprite, kTypeModel, $state){
+    $scope.type = kTypeModel;
     $scope.type.getTypes();
-    $state.go('knowledge.dcUpload');
+    $state.go('knowledge.dcManage');
   }
 ]

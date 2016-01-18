@@ -8,15 +8,15 @@
         </div>
         <div flex="40" layout="column" class="info">
           <h3>{{item.title}}</h3>
-          <h5>{{item.name}}</h5>
-          <p>{{item.updateDate}} 更新</p>
+          <h5>{{item.fileName}}</h5>
+          <p>{{item.updateTime | date : 'yyyy-MM-dd hh:mm:ss'}} 更新</p>
         </div>
-        <div flex="5" class="size">{{item.size}}</div>
+        <div flex="5" class="size">{{item.fileSize | fileSizeFilter}}</div>
         <div flex="35" class="operate">
           <section layout="row" layout-sm="column" layout-align="center center">
             <md-button class="groupX left" ng-click="switchDesc($index)">简介</md-button>
-            <md-button class="groupX middle" ng-click="getDcFile(item._id)">下载</md-button>
-            <md-button class="groupX right" ng-click="showUpdate(item._id)">修改</md-button>
+            <md-button class="groupX middle" ng-click="getDcFile(item.fileId)">下载</md-button>
+            <md-button class="groupX right">修改</md-button>
           </section>
         </div>
       </div>

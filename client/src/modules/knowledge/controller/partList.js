@@ -1,49 +1,56 @@
 'use strict';
 
-var modelUpload = ['$scope', 'dcTypeModel', 'dcModel', 'FileUploader', 'Constant',
-  function($scope, KnowledgeDcType, KnowledgeDc, FileUploader, Constant){
-  //  /**
-  //   * 对象声明
-  //   */
-  //  $scope.type = KnowledgeDcType;
-  //  $scope.dc = KnowledgeDc;
-  //  $scope.Uploader = new FileUploader({url : Constant.baseUrl + '/knowledge/dc/file'});
-  //  /**
-  //   * 对象方法声明
-  //   */
-  //  $scope.Uploader.onErrorItem = function(item){
-  //    alert(item.file.name + '上传失败');
-  //  }
-  //  $scope.Uploader.onCompleteItem = function(item, res){
-  //    console.log(item);
-  //    console.log(res);
-  //    angular.extend($scope.dc.item, {size: item.file.size, mimeType: item.file.type, name: item.file.name, path: res.data.path});
-  //    $scope.dc.addDc($scope.dc.item).then(function(){
-  //      var type = $scope.dc.item._type;
-  //      if(typeof type == 'string'){
-  //        type = JSON.parse(type);
-  //      }
-  //      $scope.type.findTypeById(type._id).num++;
-  //    });
-  //  }
-  //  $scope.dc.submit = function(){
-  //    if($scope.Uploader.queue.length == 1){
-  //      var item = $scope.Uploader.queue[0];
-  //      item.upload();
-  //    } else {
-  //      alert('确保添加了文件，有且仅一个文件');
-  //    }
-  //  }
-  //  /**
-  //   * 逻辑初始化
-  //   */
-  //  $scope.dc.item = null;
-  //  $scope.type.selectedName = '上传文档';
-  //  $scope.$watch('dc.item.keysStr', function(newValue, oldValue, scope){
-  //    if(newValue){
-  //      scope.dc.item.keys = newValue.split(' ');
-  //    }
-  //  });
+var modelUpload = ['$scope', 'partTypeModel', 'partModel',
+  function($scope, partTypeModel, partModel){
+    /**
+     * 对象声明
+     */
+    $scope.partTypes = partTypeModel;
+    $scope.part = partModel;
+    $scope.partType;  //标识选择的零部件类型
+    $scope.pagination = {
+      total: '',
+      currentPage: 1,
+      step: 5,
+      gotoPage: function(){ //注意是gotoPage()，而不是gotoPage,会在第一次加载时就执行一次
+        if($scope.partType){
+          getParts(this.currentPage);
+        }
+      }
+    }
+    var Constant = {
+      pageSize: 2,
+    }
+    /**
+     * 对象方法声明
+     */
+    function getParts(pageId){
+      $scope.part.getParts($scope.partType.id, pageId, Constant.pageSize).then(function(res){
+        if(res.code != 200) {
+          alert('没有相关文档');
+          return;
+        }
+        $scope.part.collection.forEach(function(item){
+          item.isShowInfo = false;
+        });
+        if(res.data.count){
+          $scope.pagination.total = Math.ceil(res.data.count/Constant.pageSize);
+        }
+      });
+    }
+    $scope.showInfo = function(index){
+      $scope.part.collection[index].isShowInfo = !$scope.part.collection[index].isShowInfo;
+    }
+    /**
+     * 逻辑初始化
+     */
+    $scope.part.collection = null;
+    $scope.$watch('partType', function(newValue, oldValue, scope){
+      if(newValue && (newValue != oldValue)){
+        getParts(1);
+      }
+    });
+
   }
 ];
 

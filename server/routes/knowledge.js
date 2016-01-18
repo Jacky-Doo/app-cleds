@@ -3,23 +3,25 @@
 var multer = require('multer');
 var path = require('path');
 
-var typesCtrl = require('../controllers/knowledgeTypes');
-var dcCtrl = require('../controllers/knowledgeDc');
+//var typesCtrl = require('../controllers/knowledgeTypes');
+var typesCtrl = require('../controllers/kTypes.js'),
+    dcCtrl = require('../controllers/kDc.js'),
+    partCtrl = require('../controllers/kPart.js');
+
 
 module.exports = function(app){
   app.route('/knowledge/types')
     .get(typesCtrl.getTypes)
-    .post(typesCtrl.addType);
 
-  app.route('/knowledge/dcs')
+  app.route('/knowledge/dc')
     .post(dcCtrl.addDc);
 
   app.route('/knowledge/dcs/:typeId')
     .get(dcCtrl.getDcs);
 
-  app.route('/knowledge/dc/file/:id') //下载文档文件，id为文档id并非文件路径id
-    .get(dcCtrl.getFile);
+  app.route('/knowledge/part')
+    .post(partCtrl.addPart);
 
-  app.route('/knowledge/dc/file')
-    .post(multer({dest: path.join(root, '/upload/dc')}).any(), dcCtrl.addFile);
+  app.route('/knowledge/parts/:typeId')
+    .get(partCtrl.getParts);
 }

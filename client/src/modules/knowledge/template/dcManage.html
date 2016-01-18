@@ -1,0 +1,42 @@
+<script type ="text/ng-template" id="dcUploadTpl">
+  <accordion-item>
+    <accordion-title class="section-title">
+      <md-button class="btn-full btn-right">
+        文档信息
+        <svg-icon svg-id="{{Sprite.remove}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+      </md-button>
+    </accordion-title>
+    <accordion-content class="section-content">
+      <form name="form" class="kl-upload" layout="column">
+        <md-input-container class="title">
+          <label>标题</label>
+          <input ng-model="dc.item.title" required ng-maxlength=20>
+        </md-input-container>
+        <md-input-container class="type">
+          <label>文档类型</label>
+          <md-select ng-model="dc.item.typeId" required>
+            <md-option ng-repeat="item in type.collection | kTypeFilter: '1:'" value="{{item.id}}">
+              {{item.name}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container class="keys">
+          <label>关键字</label>
+          <input ng-model="dc.item.keysStr" required>
+        </md-input-container>
+        <div class="desc">
+          <p>文档简介</p>
+          <textarea rows="6" ng-model="dc.item.desc" required></textarea>
+        </div>
+        <md-input-container class="file">
+          <input type="file" name="sfile" nv-file-select uploader="Uploader" aria-label="true" required/><br/>
+        </md-input-container>
+      </form>
+    </accordion-content>
+  </accordion-item>
+
+  <div layout="row" layout-align="space-around center">
+    <md-button class="md-raised md-primary submit" ng-click="dc.submit()" flex="45">上传文档</md-button>
+  </div>
+
+</script>

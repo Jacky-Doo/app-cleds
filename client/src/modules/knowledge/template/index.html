@@ -9,12 +9,12 @@
             编辑实例
           </md-button>
         </select-item>
-        <select-item value="编辑零部件" is-selected="true" ui-sref="knowledge.partManage">
+        <select-item value="编辑零部件" ui-sref="knowledge.partManage">
           <md-button class="btn-full li">
             编辑零部件
           </md-button>
         </select-item>
-        <select-item value="编辑文档" ui-sref="knowledge.dcUpload">
+        <select-item value="编辑文档" is-selected="true" ui-sref="knowledge.dcManage">
           <md-button class="btn-full li">
             编辑文档
           </md-button>
@@ -31,7 +31,7 @@
           </md-button>
         </select-item>
         <md-divider></md-divider>
-        <select-item ng-repeat="item in type.collection" value="{{item.name}}" ui-sref="knowledge.dcList({typeId: item._id})">
+        <select-item ng-repeat="item in type.collection | kTypeFilter: '1:'" value="{{item.name}}" ui-sref="knowledge.dcList({typeId: item.id})">
           <md-button class="btn-full li" >
             {{item.name}}&nbsp;({{item.num}})
           </md-button>
