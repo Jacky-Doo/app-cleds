@@ -48,7 +48,7 @@ var modelUpload = ['$scope', 'partTypeModel', 'partModel', 'FileUploader', 'Cons
         imageItem.upload();
         modelItem.upload();
       } else {
-        alert('确保添加了文件，有且仅一个文件');
+        alert('确保添加了每项文件，每项有且仅一个文件');
       }
     }
     /**

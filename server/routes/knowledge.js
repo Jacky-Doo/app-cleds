@@ -6,7 +6,8 @@ var path = require('path');
 //var typesCtrl = require('../controllers/knowledgeTypes');
 var typesCtrl = require('../controllers/kTypes.js'),
     dcCtrl = require('../controllers/kDc.js'),
-    partCtrl = require('../controllers/kPart.js');
+    partCtrl = require('../controllers/kPart.js'),
+    modelCtrl = require('../controllers/kModel.js');
 
 
 module.exports = function(app){
@@ -24,4 +25,7 @@ module.exports = function(app){
 
   app.route('/knowledge/parts/:typeId')
     .get(partCtrl.getParts);
+
+  app.route('/knowledge/model')
+    .post(modelCtrl.addModel);
 }

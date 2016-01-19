@@ -20,12 +20,18 @@ var kTypeModel = require('./model/kType.js');
 var dcModel = require('./model/dc.js');
 var partTypeModel = require('./model/partType.js');
 var partModel = require('./model/part.js');
+var modelModel = require('./model/model.js');
+var modelAttrModel = require('./model/modelAttr.js');
+var lightTypeModel = require('./model/lightType.js');
+var lightColorModel = require('./model/lightColor.js');
+var lightMaterialModel = require('./model/lightMaterial.js');
 /**
  * 过滤器
  */
 var kTypeFilter = require('./filter/kType.js');
 var fileSizeFilter = require('./filter/fileSize.js');
 var partNameFilter = require('./filter/partName.js');
+var partFilter = require('./filter/part.js');
 
 angular.module('knowledge', ['ngMaterial', 'angularFileUpload', 'ngResource']);
 
@@ -54,7 +60,7 @@ angular.module('knowledge')
         .state('knowledge.modelManage', {
           url: '/modelManage',
           templateUrl: 'modelManageTpl',
-          controller: modelManageCtrl
+          controller: modelManageCtrl,
         })
         .state('knowledge.partManage', {
           url: '/partManage',
@@ -85,8 +91,14 @@ angular.module('knowledge')
   .factory('dcModel', dcModel)
   .factory('partTypeModel', partTypeModel)
   .factory('partModel', partModel)
+  .factory('modelModel', modelModel)
+  .factory('lightTypeModel', lightTypeModel)
+  .factory('lightColorModel', lightColorModel)
+  .factory('lightMaterialModel', lightMaterialModel)
+  .factory('modelAttrModel', modelAttrModel)
   .filter('kTypeFilter', kTypeFilter)
   .filter('fileSizeFilter', fileSizeFilter)
   .filter('partNameFilter', partNameFilter)
+  .filter('partFilter', partFilter)
 
 module.exports = angular.module('knowledge');

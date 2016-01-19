@@ -9,37 +9,43 @@
       </accordion-title>
       <accordion-content class="section-content">
         <div layout="row" layout-wrap layout-align="space-around center">
-          <!--<md-input-container class="model-type" flex="5">-->
-          <!--<label>文档类型</label>-->
-          <!--<md-select>-->
-          <!--<md-option>-->
-          <!--wendang-->
-          <!--</md-option>-->
-          <!--</md-select>-->
-          <!--</md-input-container>-->
           <md-input-container class="name" flex="45">
-            <label>产品名称</label>
-            <input>
+            <!--产品名称-->
+            <label>{{model.item.attrList[0].name}}</label>
+            <input ng-model="model.item.attrList[0].value">
+          </md-input-container>
+          <md-input-container class="type" flex="45">
+            <!--产品类型-->
+            <label>{{model.item.attrList[1].name}}</label>
+            <md-select ng-model="model.item.attrList[1].value" required aria-label="t">
+              <md-option ng-repeat="type in lightTypes" ng-value="type">
+                {{type.name}}
+              </md-option>
+            </md-select>
           </md-input-container>
         </div>
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="productor" flex="45">
-            <label>生产商</label>
-            <input>
+            <!--生产商-->
+            <label>{{model.item.attrList[2].name}}</label>
+            <input ng-model="model.item.attrList[2].value">
           </md-input-container>
           <md-input-container class="version" flex="45">
-            <label>产品型号</label>
-            <input>
+            <!--实例型号-->
+            <label>{{model.item.attrList[3].name}}</label>
+            <input ng-model="model.item.attrList[3].value">
           </md-input-container>
         </div>
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="price" flex="45">
-            <label>价格</label>
-            <input>
+            <!--价格-->
+            <label>{{model.item.attrList[4].name}}</label>
+            <input ng-model="model.item.attrList[4].value">
           </md-input-container>
           <md-input-container class="desc" flex="45">
-            <label>描述</label>
-            <input>
+            <!--描述-->
+            <label>{{model.item.attrList[5].name}}</label>
+            <input ng-model="model.item.attrList[5].value">
           </md-input-container>
         </div>
       </accordion-content>
@@ -55,63 +61,97 @@
       <accordion-content class="section-content">
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="power-min" flex="45">
-            <label>最小功率</label>
-            <input>
+            <!--最小功率-->
+            <label>{{model.item.attrList[6].name}}</label>
+            <input ng-model="model.item.attrList[6].value">
           </md-input-container>
           <md-input-container class="power-max" flex="45">
-            <label>最大功率</label>
-            <input>
+            <!--最大功率-->
+            <label>{{model.item.attrList[7].name}}</label>
+            <input ng-model="model.item.attrList[7].value">
           </md-input-container>
         </div>
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="voltage-min" flex="45">
-            <label>最小电压</label>
-            <input>
+            <!--最小电压-->
+            <label>{{model.item.attrList[8].name}}</label>
+            <input ng-model="model.item.attrList[8].value">
           </md-input-container>
           <md-input-container class="voltage-max" flex="45">
-            <label>最大电压</label>
-            <input>
+            <!--最大电压-->
+            <label>{{model.item.attrList[9].name}}</label>
+            <input ng-model="model.item.attrList[9].value">
           </md-input-container>
         </div>
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="luminous-min" flex="45">
-            <label>最小光通量</label>
-            <input>
+            <!--最小光通量-->
+            <label>{{model.item.attrList[10].name}}</label>
+            <input ng-model="model.item.attrList[10].value">
           </md-input-container>
           <md-input-container class="luminous-max" flex="45">
-            <label>最大光通量</label>
-            <input>
+            <!--最大光通量-->
+            <label>{{model.item.attrList[11].name}}</label>
+            <input ng-model="model.item.attrList[11].value">
           </md-input-container>
         </div>
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="colorTemperature-min" flex="45">
-            <label>最小色温</label>
-            <input>
+            <!--最小色温-->
+            <label>{{model.item.attrList[12].name}}</label>
+            <input ng-model="model.item.attrList[12].value">
           </md-input-container>
           <md-input-container class="colorTemperature-max" flex="45">
-            <label>最大色温</label>
-            <input>
+            <!--最大色温-->
+            <label>{{model.item.attrList[13].name}}</label>
+            <input ng-model="model.item.attrList[13].value">
+          </md-input-container>
+        </div>
+        <div layout="row" layout-wrap layout-align="space-around center">
+          <md-input-container class="packaging" flex="45">
+            <!--尺寸-->
+            <label>{{model.item.attrList[14].name}}</label>
+            <input ng-model="model.item.attrList[14].value">
+          </md-input-container>
+          <md-input-container class="material" flex="45">
+            <!--产品材质-->
+            <label>{{model.item.attrList[15].name}}</label>
+            <md-select ng-model="model.item.attrList[15].value" required aria-label="t">
+              <md-option ng-repeat="material in lightMaterials track by $index" ng-value="material" ng-selected="($index == 0) ? true : false">
+                {{material.name}}
+              </md-option>
+            </md-select>
           </md-input-container>
         </div>
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="power-min" flex="45">
-            <label>封装方式</label>
-            <input>
+            <!--炫光等级-->
+            <label>{{model.item.attrList[16].name}}</label>
+            <input ng-model="model.item.attrList[16].value">
           </md-input-container>
-          <md-input-container class="power-max" flex="45">
-            <label>产品材质</label>
-            <input>
+          <md-input-container class="color" flex="45">
+            <!--光照颜色-->
+            <label>{{model.item.attrList[17].name}}</label>
+            <md-select ng-model="model.item.attrList[17].value" required aria-label="t">
+              <md-option ng-repeat="color in lightColors track by $index" ng-value="color" ng-selected="($index == 0) ? true : false">
+                {{color.name}}
+              </md-option>
+            </md-select>
           </md-input-container>
         </div>
         <div layout="row" layout-wrap layout-align="space-around center">
-          <md-input-container class="power-min" flex="45">
-            <label>炫光等级</label>
-            <input>
-          </md-input-container>
-          <md-input-container class="power-max" flex="45">
-            <label>光照颜色</label>
-            <input>
-          </md-input-container>
+          <div flex="45">
+            <label>零件图片</label>
+            <md-input-container class="file">
+              <input type="file" name="imageFile" nv-file-select uploader="imageUploader" aria-label="true" required/><br/>
+            </md-input-container>
+          </div>
+          <div flex="45">
+            <label>零件模型</label>
+            <md-input-container class="file">
+              <input type="file" name="modelFile" nv-file-select uploader="modelUploader" aria-label="true" required/><br/>
+            </md-input-container>
+          </div>
         </div>
       </accordion-content>
     </accordion-item>
@@ -119,59 +159,34 @@
     <accordion-item class="module-list">
       <accordion-title class="section-title">
         <md-button class="btn-full btn-right">
-          零部件列表
+          零部件模块
           <svg-icon svg-id="{{Sprite.remove}}" class="btn-right-icon custom-btn-icon"></svg-icon>
         </md-button>
       </accordion-title>
       <accordion-content>
         <accordion>
-          <accordion-item class="module-item">
-          <accordion-title class="module-title">
-            <md-button class="btn-full btn-right">
-              透镜模块
-              <svg-icon svg-id="{{Sprite.remove}}" class="btn-right-icon custom-btn-icon"></svg-icon>
-            </md-button>
-          </accordion-title>
-          <accordion-content class="module-content" layout="column">
-            <div layout="row" layout-align="space-around center">
-              <md-button flex="50" class="module-btn btn-border-left">添加</md-button>
-              <md-button flex="50" class="module-btn">新建</md-button>
-            </div>
-            <div layout="row" class="instance">
-              <div flex="75" >**透镜模块</div>
-              <div flex="20" class="operate">
-                <section layout="row" layout-sm="column" layout-align="center center">
-                  <md-button class="groupX left">编辑</md-button>
-                  <md-button class="groupX right">删除</md-button>
-                </section>
-              </div>
-            </div>
-            <div layout="row" class="instance">
-              <div flex="75" >**透镜模块</div>
-              <div flex="20" class="operate">
-                <section layout="row" layout-sm="column" layout-align="center center">
-                  <md-button class="groupX left">编辑</md-button>
-                  <md-button class="groupX right">删除</md-button>
-                </section>
-              </div>
-            </div>
-          </accordion-content>
-        </accordion-item>
-          <accordion-item class="module-item">
+          <accordion-item class="module-item" ng-repeat="partType in partTypes track by $index" is-collapse="view.partCollapse">
             <accordion-title class="module-title">
-              <md-button class="btn-full btn-right">
-                透镜模块
+              <md-button class="btn-full btn-right" ng-click="view.selectPartType(partType)">
+                {{partType.name}}
                 <svg-icon svg-id="{{Sprite.remove}}" class="btn-right-icon custom-btn-icon"></svg-icon>
               </md-button>
             </accordion-title>
-            <accordion-content class="module-content">
-              <div layout="row" class="instance">
-                <div flex="75" >**透镜模块</div>
-                <div flex="20" class="operate">
-                  <section layout="row" layout-sm="column" layout-align="center center">
-                    <md-button class="groupX left">编辑</md-button>
-                    <md-button class="groupX right">删除</md-button>
-                  </section>
+            <accordion-content class="module-content" layout="column">
+              <div  ng-repeat="part in model.item.partList | partFilter: partType.id">
+                <div layout="row" layout-align="space-around center" class="instance">
+                  <div flex="70" >{{part | partNameFilter}}</div>
+                  <div flex="20" class="operate">
+                    <section layout="row" layout-sm="column" layout-align="center center">
+                      <md-button class="groupX left" ng-click="view.showModelPartInfo($index)">查看</md-button>
+                      <md-button class="groupX right" ng-click="view.removePart($index)">删除</md-button>
+                    </section>
+                  </div>
+                </div>
+                <md-divider></md-divider>
+                <div layout="row" layout-wrap class="part-info" layout-align="space-around center" ng-show="part.isShowInfo">
+                  <div flex="35" class="part-attr" ng-repeat="attr in part.attrList">{{attr.name}}:{{attr.value}}</div>
+                  <md-divider flex="100"></md-divider>
                 </div>
               </div>
             </accordion-content>
@@ -180,8 +195,42 @@
       </accordion-content>
     </accordion-item>
 
+    <div class="module-list" style="margin:20px;">
+      <accordion-item>
+        <accordion-title class="section-title">
+          <md-button class="btn-full btn-right">
+            {{view.partType.name}}零部件列表
+            <svg-icon svg-id="{{Sprite.remove}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+          </md-button>
+        </accordion-title>
+        <accordion-content class="section-content">
+          <div ng-repeat="item in part.collection">
+            <div layout="row" layout-wrap layout-align="space-around center" class="part-item">
+              <div flex="70">{{item | partNameFilter}}</div>
+              <div flex="20" class="operate">
+                <section layout="row" layout-sm="column" layout-align="center center">
+                  <md-button class="groupX left" ng-click="view.showPartInfo($index)">查看</md-button>
+                  <md-button class="groupX right" ng-click="view.addPart($index)" ng-disabled="item.isDisabledAdd">添加</md-button>
+                </section>
+              </div>
+            </div>
+            <md-divider></md-divider>
+            <div layout="row" layout-wrap class="part-info" layout-align="space-around center" ng-show="item.isShowInfo">
+              <div flex="35" class="part-attr" ng-repeat="attr in item.attrList">{{attr.name}}:{{attr.value}}</div>
+              <md-divider flex="100"></md-divider>
+            </div>
+          </div>
+        </accordion-content>
+      </accordion-item>
+
+      <div layout="row" layout-align="center">
+        <pagination total="pagination.total" goto-page="pagination.gotoPage()" position="center" current-page="pagination.currentPage" step="pagination.step">
+        </pagination>
+      </div>
+    </div>
+
     <div layout="row" layout-align="space-around center">
-      <md-button class="md-raised md-primary submit" flex="45">确认保存</md-button>
+      <md-button class="md-raised md-primary submit" flex="45" ng-click="model.submit()">确认保存</md-button>
     </div>
   </div>
 </script>

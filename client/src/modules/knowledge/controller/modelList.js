@@ -1,10 +1,13 @@
 'use strict';
 
-var modelUpload = ['$scope', 'dcTypeModel', 'dcModel', 'FileUploader', 'Constant',
-  function($scope, KnowledgeDcType, KnowledgeDc, FileUploader, Constant){
-  //  /**
-  //   * 对象声明
-  //   */
+var modelManage = ['$scope', 'lightTypeModel', 'modelModel', 'FileUploader', 'Constant',
+  function($scope, lightTypeModel, modelModel, FileUploader, Constant){
+    /**
+     * 对象声明
+     */
+    $scope.lightTypes = lightTypeModel;
+    console.log($scope.lightTypes);
+    $scope.model = modelModel;
   //  $scope.type = KnowledgeDcType;
   //  $scope.dc = KnowledgeDc;
   //  $scope.Uploader = new FileUploader({url : Constant.baseUrl + '/knowledge/dc/file'});
@@ -47,4 +50,4 @@ var modelUpload = ['$scope', 'dcTypeModel', 'dcModel', 'FileUploader', 'Constant
   }
 ];
 
-module.exports = modelUpload;
+module.exports = modelManage;
