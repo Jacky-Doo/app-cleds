@@ -16,8 +16,8 @@
           </md-input-container>
           <md-input-container class="type" flex="45">
             <!--产品类型-->
-            <label>{{model.item.attrList[1].name}}</label>
-            <md-select ng-model="model.item.attrList[1].value" required aria-label="t">
+            <label>产品类型</label>
+            <md-select ng-model="view.modelType" required aria-label="t">
               <md-option ng-repeat="type in lightTypes" ng-value="type">
                 {{type.name}}
               </md-option>
@@ -27,25 +27,25 @@
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="productor" flex="45">
             <!--生产商-->
-            <label>{{model.item.attrList[2].name}}</label>
-            <input ng-model="model.item.attrList[2].value">
+            <label>{{model.item.attrList[1].name}}</label>
+            <input ng-model="model.item.attrList[1].value">
           </md-input-container>
           <md-input-container class="version" flex="45">
             <!--实例型号-->
-            <label>{{model.item.attrList[3].name}}</label>
-            <input ng-model="model.item.attrList[3].value">
+            <label>{{model.item.attrList[2].name}}</label>
+            <input ng-model="model.item.attrList[2].value">
           </md-input-container>
         </div>
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="price" flex="45">
             <!--价格-->
-            <label>{{model.item.attrList[4].name}}</label>
-            <input ng-model="model.item.attrList[4].value">
+            <label>{{model.item.attrList[3].name}}</label>
+            <input ng-model="model.item.attrList[3].value">
           </md-input-container>
           <md-input-container class="desc" flex="45">
             <!--描述-->
-            <label>{{model.item.attrList[5].name}}</label>
-            <input ng-model="model.item.attrList[5].value">
+            <label>{{model.item.attrList[4].name}}</label>
+            <input ng-model="model.item.attrList[4].value">
           </md-input-container>
         </div>
       </accordion-content>
@@ -62,61 +62,61 @@
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="power-min" flex="45">
             <!--最小功率-->
-            <label>{{model.item.attrList[6].name}}</label>
-            <input ng-model="model.item.attrList[6].value">
+            <label>{{model.item.attrList[5].name}}</label>
+            <input ng-model="model.item.attrList[5].value">
           </md-input-container>
           <md-input-container class="power-max" flex="45">
             <!--最大功率-->
-            <label>{{model.item.attrList[7].name}}</label>
-            <input ng-model="model.item.attrList[7].value">
+            <label>{{model.item.attrList[6].name}}</label>
+            <input ng-model="model.item.attrList[6].value">
           </md-input-container>
         </div>
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="voltage-min" flex="45">
             <!--最小电压-->
-            <label>{{model.item.attrList[8].name}}</label>
-            <input ng-model="model.item.attrList[8].value">
+            <label>{{model.item.attrList[7].name}}</label>
+            <input ng-model="model.item.attrList[7].value">
           </md-input-container>
           <md-input-container class="voltage-max" flex="45">
             <!--最大电压-->
-            <label>{{model.item.attrList[9].name}}</label>
-            <input ng-model="model.item.attrList[9].value">
+            <label>{{model.item.attrList[8].name}}</label>
+            <input ng-model="model.item.attrList[8].value">
           </md-input-container>
         </div>
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="luminous-min" flex="45">
             <!--最小光通量-->
-            <label>{{model.item.attrList[10].name}}</label>
-            <input ng-model="model.item.attrList[10].value">
+            <label>{{model.item.attrList[9].name}}</label>
+            <input ng-model="model.item.attrList[9].value">
           </md-input-container>
           <md-input-container class="luminous-max" flex="45">
             <!--最大光通量-->
-            <label>{{model.item.attrList[11].name}}</label>
-            <input ng-model="model.item.attrList[11].value">
+            <label>{{model.item.attrList[10].name}}</label>
+            <input ng-model="model.item.attrList[10].value">
           </md-input-container>
         </div>
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="colorTemperature-min" flex="45">
             <!--最小色温-->
-            <label>{{model.item.attrList[12].name}}</label>
-            <input ng-model="model.item.attrList[12].value">
+            <label>{{model.item.attrList[11].name}}</label>
+            <input ng-model="model.item.attrList[11].value">
           </md-input-container>
           <md-input-container class="colorTemperature-max" flex="45">
             <!--最大色温-->
-            <label>{{model.item.attrList[13].name}}</label>
-            <input ng-model="model.item.attrList[13].value">
+            <label>{{model.item.attrList[12].name}}</label>
+            <input ng-model="model.item.attrList[12].value">
           </md-input-container>
         </div>
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="packaging" flex="45">
             <!--尺寸-->
-            <label>{{model.item.attrList[14].name}}</label>
-            <input ng-model="model.item.attrList[14].value">
+            <label>{{model.item.attrList[13].name}}</label>
+            <input ng-model="model.item.attrList[13].value">
           </md-input-container>
           <md-input-container class="material" flex="45">
             <!--产品材质-->
-            <label>{{model.item.attrList[15].name}}</label>
-            <md-select ng-model="model.item.attrList[15].value" required aria-label="t">
+            <label>{{model.item.attrList[14].name}}</label>
+            <md-select ng-model="model.item.attrList[14].value" required aria-label="t">
               <md-option ng-repeat="material in lightMaterials track by $index" ng-value="material" ng-selected="($index == 0) ? true : false">
                 {{material.name}}
               </md-option>
@@ -126,13 +126,13 @@
         <div layout="row" layout-wrap layout-align="space-around center">
           <md-input-container class="power-min" flex="45">
             <!--炫光等级-->
-            <label>{{model.item.attrList[16].name}}</label>
-            <input ng-model="model.item.attrList[16].value">
+            <label>{{model.item.attrList[15].name}}</label>
+            <input ng-model="model.item.attrList[15].value">
           </md-input-container>
           <md-input-container class="color" flex="45">
             <!--光照颜色-->
-            <label>{{model.item.attrList[17].name}}</label>
-            <md-select ng-model="model.item.attrList[17].value" required aria-label="t">
+            <label>{{model.item.attrList[16].name}}</label>
+            <md-select ng-model="model.item.attrList[16].value" required aria-label="t">
               <md-option ng-repeat="color in lightColors track by $index" ng-value="color" ng-selected="($index == 0) ? true : false">
                 {{color.name}}
               </md-option>

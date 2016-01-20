@@ -24,6 +24,7 @@ var modelManage = ['$scope', 'lightTypeModel', 'modelModel', 'FileUploader', 'Co
     $scope.view = { //视图对象
       partCollapse: true,
       partType: null,
+      modelType: null,
       selectPartType: function(partType){
         this.partType = partType;
         getParts(1);
@@ -126,6 +127,12 @@ var modelManage = ['$scope', 'lightTypeModel', 'modelModel', 'FileUploader', 'Co
      */
     $scope.model.item = {};
     angular.merge($scope.model.item, {attrList: modelAttrModel});
+    $scope.$watch('view.modelType', function(newValue, oldValue){
+    if($scope.view.modelType){
+        $scope.model.item.typeId = $scope.view.modelType.id;
+        $scope.model.item.typeName = $scope.view.modelType.name;
+      }
+    })
   }
 ];
 

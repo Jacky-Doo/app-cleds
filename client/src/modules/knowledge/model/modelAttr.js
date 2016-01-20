@@ -3,7 +3,6 @@
 module.exports = [function(){
   var modelAttrs = [
     {id: "name", name: "实例名称", value: "", unit: ""},
-    {id: "type", name: "产品类型", value: "", unit: ""},
     {id: "producer", name: "生产商", value: "", unit: ""},
     {id: "version", name: "实例型号", value: "", unit: ""},
     {id: "price", name: "价格", value: "", unit: "￥"},

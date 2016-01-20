@@ -3,7 +3,6 @@
 var multer = require('multer');
 var path = require('path');
 
-//var typesCtrl = require('../controllers/knowledgeTypes');
 var typesCtrl = require('../controllers/kTypes.js'),
     dcCtrl = require('../controllers/kDc.js'),
     partCtrl = require('../controllers/kPart.js'),
@@ -28,4 +27,7 @@ module.exports = function(app){
 
   app.route('/knowledge/model')
     .post(modelCtrl.addModel);
+
+  app.route('/knowledge/models')
+    .get(modelCtrl.getModels);
 }

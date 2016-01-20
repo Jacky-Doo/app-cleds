@@ -56,32 +56,56 @@ module.exports = {
    *   ]
    * }
    */
-  getParts: function(req, res){
+  getModels: function(req, res){
     var resData;
-    var typeId = req.params.typeId;
+    var typeId = req.query.typeId;
     var pageId = req.query.pageId;
     var pageSize = req.query.pageSize;
     var startIndex = pageSize*(pageId-1);
-    partModel
-      .find({typeId: typeId})
-      .limit(pageSize)
-      .skip(startIndex)
-      .exec(function(err, data){
-        if(data.length == 0){
-          resData = {code: 404, data: null, msg: '没有零件'};
-          res.json(resData);
-        } else {
-          resData = {code: 200, data: {parts: data}, msg: '查找成功'};
-          if(pageId == 1){
-            partModel.count({typeId: typeId}, function(err, count){
-              resData.data.count = count;
-              res.json(resData);
-            })
-          } else {
+    if(typeId == 'any'){
+      modelModel
+        .find({})
+        .limit(pageSize)
+        .skip(startIndex)
+        .exec(function(err, data){
+          if(data.length == 0){
+            resData = {code: 404, data: null, msg: '没有零件'};
             res.json(resData);
+          } else {
+            resData = {code: 200, data: {models: data}, msg: '查找成功'};
+            if(pageId == 1){
+              modelModel.count({}, function(err, count){
+                resData.data.count = count;
+                res.json(resData);
+              })
+            } else {
+              res.json(resData);
+            }
           }
-        }
-      })
-  }
+        })
+    } else if(typeId){
+      modelModel
+        .find({typeId: typeId})
+        .limit(pageSize)
+        .skip(startIndex)
+        .exec(function(err, data){
+          if(data.length == 0){
+            resData = {code: 404, data: null, msg: '没有零件'};
+            res.json(resData);
+          } else {
+            resData = {code: 200, data: {models: data}, msg: '查找成功'};
+            if(pageId == 1){
+              modelModel.count({typeId: typeId}, function(err, count){
+                resData.data.count = count;
+                res.json(resData);
+              })
+            } else {
+              res.json(resData);
+            }
+          }
+        })
+    }
+
+  },
 }
 

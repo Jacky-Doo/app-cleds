@@ -32,6 +32,7 @@ var kTypeFilter = require('./filter/kType.js');
 var fileSizeFilter = require('./filter/fileSize.js');
 var partNameFilter = require('./filter/partName.js');
 var partFilter = require('./filter/part.js');
+var modelAttrFilter = require('./filter/modelAttr.js');
 
 angular.module('knowledge', ['ngMaterial', 'angularFileUpload', 'ngResource']);
 
@@ -100,5 +101,6 @@ angular.module('knowledge')
   .filter('fileSizeFilter', fileSizeFilter)
   .filter('partNameFilter', partNameFilter)
   .filter('partFilter', partFilter)
+  .filter('modelAttrFilter', modelAttrFilter)
 
 module.exports = angular.module('knowledge');

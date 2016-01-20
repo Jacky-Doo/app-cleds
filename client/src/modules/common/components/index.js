@@ -9,3 +9,5 @@ require('./select-group/select-group.js');
 require('./select-group/selectgroup.less');
 require('./pagination/pagination.js');
 require('./pagination/pagination.less');
+require('./nav-fab/nav-fab.js');
+require('./nav-fab/nav-fab.less');

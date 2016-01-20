@@ -15,7 +15,6 @@ var modelUpload = ['$scope', 'partTypeModel', 'partModel',
       gotoPage: function(){ //注意是gotoPage()，而不是gotoPage,会在第一次加载时就执行一次
         if($scope.partType){
           getParts(this.currentPage);
-
         }
       }
     }

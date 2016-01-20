@@ -65,6 +65,23 @@ angular.module('app')
             }]
           }
         })
+        .state('3dprint', {
+          url: '/3dprint',
+          template: require('../modules/3dprint/template/3dprint.html'),
+          resolve: {
+            foo: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad){
+              var deferred = $q.defer();
+              require.ensure([], function (require) {
+                var mod = require('../modules/3dprint/index.js');
+                $ocLazyLoad.load({
+                  name: mod.name,
+                });
+                deferred.resolve();
+              });
+              return deferred.promise;
+            }]
+          }
+        })
 
       $urlRouterProvider.otherwise('home');
       $locationProvider.html5Mode(false);

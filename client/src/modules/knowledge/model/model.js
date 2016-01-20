@@ -1,34 +1,29 @@
 'use strict';
 
 module.exports = ['$http', '$q', 'Constant', '$resource', function($http, $q, Constant, $resource){
-  var modelRsc = $resource(
-    Constant.baseUrl + '/knowledge/model/:id',
-    {id: '@id',}
-  );
-  var modelsRsc = $resource(
-    Constant.baseUrl + '/knowledge/models/:typeId',
-    {typeId: '@typeId'}
-  )
+  var modelRsc = $resource(Constant.baseUrl + '/knowledge/model/');
+  var modelsRsc = $resource(Constant.baseUrl + '/knowledge/models');
 
   var modelModel = {
     item: {},
     collection: [],
 
-    //getModels: function(typeId, pageId, pageSize){
-    //  var d = $q.defer();
-    //  modelsRsc.get({typeId: typeId, pageId: pageId, pageSize: pageSize}, function(res){
-    //    modelModel.collection = [];
-    //    if(res.data){
-    //      res.data.models.forEach(function(item){
-    //        modelModel.collection.push(item);
-    //      });
-    //    }
-    //    d.resolve(res);
-    //  }), function(err){
-    //    d.reject(err);
-    //  }
-    //  return d.promise;
-    //},
+    getModels: function(typeId, pageId, pageSize){
+      var d = $q.defer();
+      modelsRsc.get({typeId: typeId, pageId: pageId, pageSize: pageSize}, function(res){
+        modelModel.collection = [];
+        if(res.data){
+          console.log(res.data);
+          res.data.models.forEach(function(item){
+            modelModel.collection.push(item);
+          });
+        }
+        d.resolve(res);
+      }), function(err){
+        d.reject(err);
+      }
+      return d.promise;
+    },
 
     addModel: function(item){
       var d = $q.defer();

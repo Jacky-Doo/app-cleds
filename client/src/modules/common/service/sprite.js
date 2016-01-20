@@ -11,6 +11,10 @@ module.exports = {
   search: svgSymbols + '#ic-search',
   download: svgSymbols + '#ic-download',
   upload: svgSymbols + '#ic-upload',
-  right: svgSymbols + '#ic-right'
+  right: svgSymbols + '#ic-right',
+  menu: svgSymbols + '#ic-menu',
+  shopping: svgSymbols + '#ic-shopping',
+  setting: svgSymbols + '#ic-setting',
+  home: svgSymbols + '#ic-home',
 }
 
