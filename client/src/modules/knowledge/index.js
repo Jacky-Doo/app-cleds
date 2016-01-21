@@ -81,7 +81,7 @@ angular.module('knowledge')
     }
   ])
   //缓存contrlller，这样可以直接在模板中使用，而不用在路由中定义
-  .controller('indexCtrl', indexCtrl)
+  .controller('indexKnowledgeCtrl', indexCtrl)
   .controller('dcListCtrl', dcListCtrl)
   .controller('dcManageCtrl', dcManageCtrl)
   .controller('modelManageCtrl', modelManageCtrl)

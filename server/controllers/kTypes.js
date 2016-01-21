@@ -33,7 +33,6 @@ module.exports = {
     types.forEach(function(item, index){
       if(item.id.split(':')[0] == '1') {
         dcModel.count({typeId: item.id}, function(err, count){
-          console.log(count);
           types[index].num = count;
           i++;
           if(i == types.length){

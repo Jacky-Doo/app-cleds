@@ -6,9 +6,10 @@ require('./style/index.less');
 /**
  * 控制器
  */
+var customNavCtrl = require('./controller/customNav');
 var indexCtrl = require('./controller/index.js');
 var homeCtrl = require('./controller/home.js');
-var customNavCtrl = require('./controller/customNav');
+var cPartCtrl = require('./controller/cPart.js');
 /**
  * 数据模型
  */
@@ -35,6 +36,7 @@ angular.module('custom', ['ngMaterial', 'ngResource']);
 angular.module('custom')
   .run(['$templateCache', function($templateCache) {
     $templateCache.put('homeTpl', require('./template/home.html'));
+    $templateCache.put('cPartTpl', require('./template/cPart.html'));
   }])
   .config(['$stateProvider',
     function($stateProvider){
@@ -44,10 +46,16 @@ angular.module('custom')
           templateUrl: 'homeTpl',
           controller: homeCtrl
         })
+        .state('custom.part', {
+          url: '/part',
+          templateUrl: 'cPartTpl',
+          controller: homeCtrl
+        })
     }
   ])
-  .controller('indexCtrl', indexCtrl)
+  .controller('indexCustomCtrl', indexCtrl)
   .controller('homeCtrl', homeCtrl)
+  .controller('cPartCtrl', cPartCtrl)
   .controller('CustomNavCtrl', customNavCtrl)
   .factory('kTypeModel', kTypeModel)
   .factory('dcModel', dcModel)

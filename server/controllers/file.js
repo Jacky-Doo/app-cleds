@@ -37,7 +37,6 @@ module.exports = {
     var id = req.params.id;
     fileModel.findById(id, function(err, file){
       if(file){
-        console.log(file);
         var src = path.join(root, '/file', file.path);
         var destDir = path.join(root, '/tmp');
         var destFile = path.join(destDir, file.name);

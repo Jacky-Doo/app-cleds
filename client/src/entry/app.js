@@ -11,29 +11,12 @@ angular.module('app')
           url: '/custom',
           template: require('../modules/custom/template/index.html'),
           resolve: {
-            foo: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad){
+            foo1: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad){
               var deferred = $q.defer();
-              require.ensure(['../modules/custom/index.js'], function (require) {
+              require.ensure([], function (require) {
                 var mod = require('../modules/custom/index.js');
                 $ocLazyLoad.load({
                   name: 'custom',
-                });
-                deferred.resolve();
-              });
-              return deferred.promise;
-            }]
-          }
-        })
-        .state('screen', {
-          url: '/screen',
-          template: require('../modules/screen/template/screen.html'),
-          resolve: {
-            foo: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad){
-              var deferred = $q.defer();
-              require.ensure([], function (require) {
-                var mod = require('../modules/screen/screen.js');
-                $ocLazyLoad.load({
-                  name: mod.name,
                 });
                 deferred.resolve();
               });
@@ -45,7 +28,7 @@ angular.module('app')
           url: '/knowledge',
           template: require('../modules/knowledge/template/index.html'),
           resolve: {
-            foo: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad){
+            foo2: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad){
               var deferred = $q.defer();
               require.ensure([], function (require) {
                 var mod = require('../modules/knowledge/index.js');
@@ -62,10 +45,27 @@ angular.module('app')
           url: '/3dprint',
           template: require('../modules/3dprint/template/3dprint.html'),
           resolve: {
-            foo: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad){
+            foo3: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad){
               var deferred = $q.defer();
               require.ensure([], function (require) {
                 var mod = require('../modules/3dprint/index.js');
+                $ocLazyLoad.load({
+                  name: mod.name,
+                });
+                deferred.resolve();
+              });
+              return deferred.promise;
+            }]
+          }
+        })
+        .state('screen', {
+          url: '/screen',
+          template: require('../modules/screen/template/screen.html'),
+          resolve: {
+            foo4: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad){
+              var deferred = $q.defer();
+              require.ensure([], function (require) {
+                var mod = require('../modules/screen/screen.js');
                 $ocLazyLoad.load({
                   name: mod.name,
                 });

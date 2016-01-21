@@ -25,7 +25,7 @@ angular.module('gb.component')
             <a aria-label="home" class="md-button md-fab md-raised md-mini" ng-href="//www.cleds.cn" aria-label="a">\
               <svg-icon svg-id="{{Sprite.home}}" class="item"></svg-icon>\
             </a>\
-            <a aria-label="" class="md-button md-fab md-raised md-mini" ui-sref="home" aria-label="a">\
+            <a aria-label="" class="md-button md-fab md-raised md-mini" ui-sref="custom.home" aria-label="a">\
               <svg-icon svg-id="{{Sprite.shopping}}" class="item"></svg-icon>\
             </a>\
           </md-fab-actions>\

@@ -27,7 +27,6 @@ module.exports = {
   addDc: function(req, res){
     var dcData = req.body.dc;
     var resData;
-    console.log(req.body.dc);
     dcModel.find({title: dcData.tite}, function(err, data){
       if(data.length){
         resData = {code: 304, data: null, msg: '标题已存在'};

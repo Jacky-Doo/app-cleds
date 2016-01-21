@@ -146,7 +146,6 @@ function _modelDealsFilter(models ,callback){
     }
     fileModel.findById(item.imageId, function(err, file){
       i++;
-      console.log(file);
       if(err){
         console.log(err);
         return false;
