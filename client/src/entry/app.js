@@ -1,29 +1,22 @@
 'use strict';
 
-//var lazyLoadModule = require('../util/lazyLoad.js').lazyLoadModule;
 require('../modules/common/common.js');
-//var mod = require('../modules/home/home.js');
 
 angular.module('app', ['ui.router', 'oc.lazyLoad', 'ngMaterial', 'gb.component', 'common']);
 angular.module('app')
   .config(['$rootScopeProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider','$mdThemingProvider',
     function($rootScopeProvider, $stateProvider, $urlRouterProvider, $locationProvider, $mdThemingProvider) {
       $stateProvider
-        //.state('home', {
-        //  url: '/home',
-        //  template: '<div>template</div>'
-        //})
-        .state('home', {
-          url: '/home',
-          template: require('../modules/home/template/home.html'),
-          controller: 'HomeCtrl',
+        .state('custom', {
+          url: '/custom',
+          template: require('../modules/custom/template/index.html'),
           resolve: {
             foo: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad){
               var deferred = $q.defer();
-              require.ensure(['../modules/home/home.js'], function (require) {
-                var mod = require('../modules/home/home.js');
+              require.ensure(['../modules/custom/index.js'], function (require) {
+                var mod = require('../modules/custom/index.js');
                 $ocLazyLoad.load({
-                  name: 'home',
+                  name: 'custom',
                 });
                 deferred.resolve();
               });
@@ -83,7 +76,7 @@ angular.module('app')
           }
         })
 
-      $urlRouterProvider.otherwise('home');
+      $urlRouterProvider.otherwise('custom');
       $locationProvider.html5Mode(false);
       $locationProvider.hashPrefix('!');
       $rootScopeProvider.digestTtl(15);

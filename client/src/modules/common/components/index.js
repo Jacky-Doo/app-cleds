@@ -11,3 +11,5 @@ require('./pagination/pagination.js');
 require('./pagination/pagination.less');
 require('./nav-fab/nav-fab.js');
 require('./nav-fab/nav-fab.less');
+require('./deal-card/deal-card.js');
+require('./deal-card/deal-card.less');

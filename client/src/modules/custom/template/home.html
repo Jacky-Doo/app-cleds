@@ -1,0 +1,70 @@
+<script type ="text/ng-template" id="homeTpl">
+  <div class="home-tpl" ng-controller="homeCtrl">
+    <section class="banner"></section>
+
+    <section class="custom-nav" ng-controller="CustomNavCtrl">
+      <accordion-item is-collapse="header.isCollapse">
+        <accordion-title class="header">
+          <md-button class="btn-full btn-right custom-btn">
+            专属定制
+            <svg-icon svg-id="{{header.svg}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+          </md-button>
+        </accordion-title>
+        <accordion-content class="custom-nav-content">
+          <accordion>
+            <accordion-item ng-repeat="item in content.items" is-collapse="item.isCollapse">
+              <md-divider class="divider"></md-divider>
+              <accordion-title>
+                <md-button class="btn-full btn-right">
+                  {{item.title}}
+                  <svg-icon svg-id="{{item.svg}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+                </md-button>
+              </accordion-title>
+              <accordion-content>
+                <ul>
+                  <li ng-repeat="option in item.options">
+                    <md-button class="item-btn btn-full" ui-sref="screen">
+                      {{option}}
+                    </md-button>
+                  </li>
+                </ul>
+              </accordion-content>
+            </accordion-item>
+          </accordion>
+          <div>
+            <md-divider class="divider"></md-divider>
+            <md-button class="btn-full btn-right">
+              什么是专属定制
+              <svg-icon svg-id="{{whatSvg}}" class="btn-right-icon"></svg-icon>
+            </md-button>
+          </div>
+        </accordion-content>
+      </accordion-item>
+    </section>
+
+    <section class="cst-container">
+      <div class="cst-header">
+        <h1>立即开始</h1>
+        <p>准备好缔造你的专属烙印了吗？Cleds专属定制畅销精品，</p>
+        <p>选择其一开始定制之旅</p>
+      </div>
+      <div layout="row" layout-align="space-around center" layout-wrap class="cst-content">
+        <deal-card ng-repeat="deal in deals"></deal-card>
+      </div>
+    </section>
+
+    <section class="desc">
+      <div>
+        <h2>自由打造专属设计</h2>
+        <h1>Cleds制造</h1>
+        <p>Cleds这项服务让你能够按照心中所想,</p>
+        <p>精确定制你的专属LED照明产品。添加你的个性元素,从零设计,或优化你的</p>
+        <p>性能配置,丰富可能任你发掘。释放你的创意,</p>
+        <p>发掘Cleds卓越的个性化服务。</p>
+      </div>
+    </section>
+
+    <nav-fab></nav-fab>
+  </div>
+</script>
+

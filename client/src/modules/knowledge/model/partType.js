@@ -90,9 +90,9 @@ module.exports = ["$http", '$q', 'Constant', '$resource', function($http, $q, Co
       name: "外壳",
       attrList: [
         {id: "name", name: "名称", value: "", unit: ""},
-        {attr: "producer", name: "生产商", value: "String"},
-        {attr: "version", name: "型号", value: "String"},
-        {attr: "material", name: "材质", value: "String"},
+        {attr: "producer", name: "生产商", value: ""},
+        {attr: "version", name: "型号", value: ""},
+        {attr: "material", name: "材质", value: ""},
       ]
     }
   ];

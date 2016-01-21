@@ -3,6 +3,7 @@
 module.exports = ['$http', '$q', 'Constant', '$resource', function($http, $q, Constant, $resource){
   var modelRsc = $resource(Constant.baseUrl + '/knowledge/model/');
   var modelsRsc = $resource(Constant.baseUrl + '/knowledge/models');
+  var modelDealsRsc = $resource(Constant.baseUrl + '/knowledge/modeldeals');
 
   var modelModel = {
     item: {},
@@ -13,7 +14,6 @@ module.exports = ['$http', '$q', 'Constant', '$resource', function($http, $q, Co
       modelsRsc.get({typeId: typeId, pageId: pageId, pageSize: pageSize}, function(res){
         modelModel.collection = [];
         if(res.data){
-          console.log(res.data);
           res.data.models.forEach(function(item){
             modelModel.collection.push(item);
           });
@@ -51,7 +51,18 @@ module.exports = ['$http', '$q', 'Constant', '$resource', function($http, $q, Co
     removePart: function(index){
       if(!this.item.partList) return false;
       this.item.partList.splice(index ,1);
-    }
+    },
+
+
+    getModelDeals: function(typeId, pageId, pageSize){
+      var d = $q.defer();
+      modelDealsRsc.get({typeId: typeId, pageId: pageId, pageSize: pageSize}, function(res){
+        d.resolve(res);
+      }), function(err){
+        d.reject(err);
+      }
+      return d.promise;
+    },
   }
 
   return modelModel;

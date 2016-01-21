@@ -19,15 +19,15 @@ angular.module('gb.component')
             </md-button>\
           </md-fab-trigger>\
           <md-fab-actions>\
-            <md-button aria-label="3dprint" class="md-fab md-raised md-mini" ui-sref="3dprint" aria-label="a">\
+            <a aria-label="3dprint" class="md-button md-fab md-raised md-mini" ui-sref="3dprint" aria-label="a">\
               <svg-icon svg-id="{{Sprite.setting}}" class="item"></svg-icon>\
-            </md-button>\
-            <md-button aria-label="home" class="md-fab md-raised md-mini" ng-href="//www.cleds.cn" aria-label="a">\
+            </a>\
+            <a aria-label="home" class="md-button md-fab md-raised md-mini" ng-href="//www.cleds.cn" aria-label="a">\
               <svg-icon svg-id="{{Sprite.home}}" class="item"></svg-icon>\
-            </md-button>\
-            <md-button aria-label="" class="md-fab md-raised md-mini" ui-sref="home" aria-label="a">\
+            </a>\
+            <a aria-label="" class="md-button md-fab md-raised md-mini" ui-sref="home" aria-label="a">\
               <svg-icon svg-id="{{Sprite.shopping}}" class="item"></svg-icon>\
-            </md-button>\
+            </a>\
           </md-fab-actions>\
         </md-fab-speed-dial>\
       </section>',

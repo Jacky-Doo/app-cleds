@@ -30,4 +30,7 @@ module.exports = function(app){
 
   app.route('/knowledge/models')
     .get(modelCtrl.getModels);
+
+  app.route('/knowledge/modeldeals')
+    .get(modelCtrl.getModelDeals);
 }
