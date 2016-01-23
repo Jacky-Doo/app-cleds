@@ -1,4 +1,5 @@
-log/all-log.log
+log/*
+test/*
+file/*
 node_modules/
 .idea/
-server/file/*

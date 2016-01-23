@@ -18,7 +18,7 @@ var all = {
   maxAge: 60000,
 }
 var production = {
-  logFormat: 'combined', //morgan日志格式
+  logFormat: 'dev', //morgan日志格式
 }
 var development = {
   logFormat: 'dev',

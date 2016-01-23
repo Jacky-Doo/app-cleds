@@ -37,7 +37,7 @@ module.exports = {
     var id = req.params.id;
     fileModel.findById(id, function(err, file){
       if(file){
-        var src = path.join(root, '/file', file.path);
+        var src = path.join(root, '../file', file.path);
         var destDir = path.join(root, '/tmp');
         var destFile = path.join(destDir, file.name);
         var download = function(res){

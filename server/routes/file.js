@@ -7,7 +7,7 @@ var fileCtrl = require('../controllers/file.js');
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     var destDir = req.params[0] ? req.params[0] : 'default';
-      cb(null, path.join(root, '/file/'+destDir));
+      cb(null, path.join(root, '../file/'+destDir));
   },
   filename: function (req, file, cb) {
     var fileFormat = (file.originalname).split(".");

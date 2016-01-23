@@ -5,6 +5,7 @@ var winston = require('winston');
 var fileTransport = new winston.transports.File({
   level:'info',
   filename: './log/all-log.log',
+  stream: '',
   handleException: true,
   json: true,
   maxsize: 5242880,
@@ -19,7 +20,8 @@ var consoleTransport = new winston.transports.Console({
 });
 
 var logger = new winston.Logger({
-  transports: [consoleTransport, fileTransport],
+  //transports: [consoleTransport, fileTransport],
+  transports: [consoleTransport],
   exitOnError: false,
 });
 
