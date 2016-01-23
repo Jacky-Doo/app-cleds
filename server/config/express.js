@@ -45,7 +45,7 @@ module.exports = function(db){
   //CORS跨域解决方案
   app.all('*', function(req, res, next){
     if (!req.get('Origin')) return next();
-    res.set('Access-Control-Allow-Origin', 'http://localhost:8080');
+    res.set('Access-Control-Allow-Origin', '*');
     res.set('Access-Control-Allow-Methods', 'PUT');
     res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
     //res.set('Access-Control-Allow-Max-Age', 3600);
