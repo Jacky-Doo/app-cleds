@@ -1,2 +1,4 @@
+log/all-log.log
 node_modules/
 .idea/
+server/file/*
