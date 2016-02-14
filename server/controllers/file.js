@@ -63,5 +63,18 @@ module.exports = {
         });
       }
     })
+  },
+
+  getFileSrc: function(req, res, id){
+    var id = id || req.params.id;
+    var resData;
+    fileModel.findById(id, function(err, file){
+      if(file){
+        resData = {code: 200, data: {fileSrc: file.path}};
+        res.json(resData);
+      } else {
+        res.json('y');
+      }
+    })
   }
 }

@@ -9,7 +9,7 @@ var all = {
   templateEngine: 'hbs',
   viewsDir: 'views',
   publicDir: '../client/dist',
-  fileDir: 'file/',
+  fileDir: '../file/',
   routesPath: 'routes/*.js',
   modelsPath: 'models/*.js',
   db: 'mongodb://localhost/app-cleds',

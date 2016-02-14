@@ -1,7 +1,12 @@
 <script type ="text/ng-template" id="cPartTpl">
   <div class="c-part-tpl">
     <div class="content" layout="row">
-      <div flex="75"></div>
+      <div flex="75">
+        <div class="title">产品名称:{{model | modelAttrFilter:'name':'value'}}</div>
+        <div layout="column">
+          <div class="parts" flex="100" ng-repeat="item in model.partList | selectedPartFilter">{{item.typeName}}:{{item | partNameFilter}}</div>
+        </div>
+      </div>
       <div flex="25" layout="column">
         <div class="model-info" layout="column">
           <span flex>产品名称：***LED射灯</span>
@@ -9,33 +14,9 @@
           <span flex>描述：***LED射灯</span>
         </div>
         <div class="model-parts" layout="column">
-          <div class="part-select" layout="row">
+          <div layout="row" ng-repeat="partType in partTypes track by $index" ng-class="{'active': partType.active, 'part-select': true}">
             <span class="tag" flex="20"></span>
-            <md-button class="btn md-raised md-cornered md-primary" flex="100">芯片模块</md-button>
-          </div>
-          <div class="part-select" layout="row">
-            <span class="tag" flex="20"></span>
-            <md-button class="btn md-raised md-cornered md-primary" flex="100">芯片模块</md-button>
-          </div>
-          <div class="part-select" layout="row">
-            <span class="tag" flex="20"></span>
-            <md-button class="btn md-raised md-cornered md-primary" flex="100">芯片模块</md-button>
-          </div>
-          <div class="part-select" layout="row">
-            <span class="tag" flex="20"></span>
-            <md-button class="btn md-raised md-cornered md-primary" flex="100">芯片模块</md-button>
-          </div>
-          <div class="part-select" layout="row">
-            <span class="tag" flex="20"></span>
-            <md-button class="btn md-raised md-cornered md-primary" flex="100">芯片模块</md-button>
-          </div>
-          <div class="part-select" layout="row">
-            <span class="tag" flex="20"></span>
-            <md-button class="btn md-raised md-cornered md-primary" flex="100">芯片模块</md-button>
-          </div>
-          <div class="part-select" layout="row">
-            <span class="tag" flex="20"></span>
-            <md-button class="btn md-raised md-cornered md-primary" flex="100">芯片模块</md-button>
+            <md-button class="btn md-raised md-cornered md-primary" flex="100" ng-click="view.switchPart(partType.id, $index)">{{partType.name}}</md-button>
           </div>
         </div>
         <div class="op" layout="column">
@@ -43,21 +24,16 @@
             <md-button class="groupX left" ng-click="">上一步</md-button>
             <md-button class="groupX right" ng-click="">下一步</md-button>
           </div>
-          <md-button class="c-btn md-raised md-warn">立即定制</md-button>
+          <md-button class="c-btn md-raised md-warn" ng-click="gg">生成定制</md-button>
         </div>
       </div>
     </div>
-    <div class="part-list" layout="row" layout-align="space-around center">
-      <div class="part-item" flex="15" layout="column">
-        <div class="img"></div>
-        <p class="name">名称：***LED芯片</p>
-        <md-button class="detail md-raised md-cornered md-warn">详情</md-button>
+    <div class="part-list" layout="row" layout-align="space-around center" style="min-height: 140px;">
+      <div flex="15" layout="column" ng-repeat="part in view.parts" ng-class="{'part-item': true, 'selected': part.selected}">
+        <img class="img" ng-click="view.selectPart($index)" ng-src="{{}}" />
+        <p class="name">名称：{{part | partNameFilter}}</p>
+        <md-button class="detail md-raised md-cornered md-warn" ng-click="view.showPartInfo(part)">详情</md-button>
       </div>
-      <div class="part-item" flex="15"></div>
-      <div class="part-item" flex="15"></div>
-      <div class="part-item" flex="15"></div>
-      <div class="part-item" flex="15"></div>
-      <div class="part-item" flex="15"></div>
     </div>
     <accordion-item class="part-info">
       <accordion-title class="section-title">
@@ -67,10 +43,9 @@
         </md-button>
       </accordion-title>
       <accordion-content class="section-content">
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        <div layout="row" layout-wrap layout-align="space-around center" layout-padding>
+          <div flex="35" ng-repeat="item in view.part.attrList">{{item.name}}:{{item.value}}</div>
+        </div>
       </accordion-content>
     </accordion-item>
   </div>

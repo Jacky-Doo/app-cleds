@@ -6,6 +6,7 @@
  */
 module.exports = function(){
   return function(item, id, attr){
+    if(!item) return;
     for(var i=0; i<item.attrList.length; i++){
       if(item.attrList[i].id == id){
         if(typeof item.attrList[i][attr] == 'object'){

@@ -112,10 +112,11 @@ var modelManage = ['$scope', 'lightTypeModel', 'modelModel', 'FileUploader', 'Co
       }
     }
     $scope.model.submit = function(){
-      if($scope.imageUploader.queue.length == 1 && $scope.modelUploader.queue.length == 1){
+      if($scope.imageUploader.queue.length > 0 && $scope.modelUploader.queue.length == 1){
         uploadCount = 0;
-        var imageItem = $scope.imageUploader.queue[0];
-        var modelItem = $scope.modelUploader.queue[0];
+        var lenght = $scope.imageUploader.queue.length;
+        var imageItem = $scope.imageUploader.queue[lenght-1];
+        var modelItem = $scope.modelUploader.queue[lenght-1];
         imageItem.upload();
         modelItem.upload();
       } else {

@@ -20,7 +20,7 @@ angular.module('gb.component')
           </div>\
           <md-card-actions layout="row" layout layout-align="space-around center">\
             <span class="deal-desc" flex="60">&nbsp;&nbsp;&nbsp;&nbsp;{{deal.desc}}</span>\
-            <md-button class="md-raised md-warn" flex="40" ui-sref="custom.part({modoelId: deal.id})">立即定制</md-button>\
+            <md-button class="md-raised md-warn" flex="40" ui-sref="custom.part({modelId: deal.id})">立即定制</md-button>\
           </md-card-actions>\
          </div>\
       </md-card>',

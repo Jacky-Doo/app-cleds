@@ -26,7 +26,8 @@ module.exports = function(app){
     .get(partCtrl.getParts);
 
   app.route('/knowledge/model')
-    .post(modelCtrl.addModel);
+    .post(modelCtrl.addModel)
+    .get(modelCtrl.getModel);
 
   app.route('/knowledge/models')
     .get(modelCtrl.getModels);

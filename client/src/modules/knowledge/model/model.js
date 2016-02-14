@@ -25,6 +25,21 @@ module.exports = ['$http', '$q', 'Constant', '$resource', function($http, $q, Co
       return d.promise;
     },
 
+    getModel: function(modelId){
+      var d = $q.defer();
+      modelRsc.get({modelId: modelId}, function(res){
+        if(res.code == '200'){
+          d.resolve(res.data.model);
+        } else{
+          alert('没有model:' + modelId);
+          d.resolve();
+        }
+      }, function(err){
+        d.reject(err);
+      })
+      return d.promise;
+    },
+
     addModel: function(item){
       var d = $q.defer();
       var model = angular.merge({}, item);

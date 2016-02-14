@@ -60,15 +60,15 @@ var getModels = function(req, res){
   var resData;
   var typeId = req.query.typeId;
   var pageId = req.query.pageId;
-  var pageSize = req.query.pageSize;
-  var startIndex = pageSize*(pageId-1);
+  var pageSize = parseInt(req.query.pageSize);
+  var startIndex = parseInt(pageSize*(pageId-1));
   if(typeId == 'any'){
     modelModel
       .find({})
-      .limit(pageSize)
+      //.limit(pageSize)
       .skip(startIndex)
       .exec(function(err, data){
-        if(data.length == 0){
+        if(!data){
           resData = {code: 404, data: null, msg: '没有零件'};
           res.json(resData);
         } else {
@@ -105,22 +105,34 @@ var getModels = function(req, res){
         }
       })
   }
-
 };
+
+var getModel = function(req, res){
+  var resData;
+  var modelId = req.query.modelId;
+  modelModel.findById(modelId, function(err, data){
+    if(data){
+      resData = {code: 200, data: {model: data}, msg: '查找成功'};
+    } else {
+      resData = {code: 404, data: null, msg: '没有实例'};
+    }
+    res.json(resData);
+  })
+}
 
 var getModelDeals = function(req, res){
   var resData;
   var typeId = req.query.typeId;
   var pageId = req.query.pageId;
-  var pageSize = req.query.pageSize;
-  var startIndex = pageSize*(pageId-1);
+  var pageSize = parseInt(req.query.pageSize);
+  var startIndex = parseInt(pageSize*(pageId-1));
   if(typeId == 'any'){
     modelModel
       .find({})
       .limit(pageSize)
       .skip(startIndex)
       .exec(function(err, data){
-        if(data.length == 0){
+        if(!data){
           resData = {code: 404, data: null, msg: '没有零件'};
           res.json(resData);
         } else {
@@ -175,6 +187,7 @@ function _modelAttrFilter(item, id, attr){
 
 module.exports = {
   addModel: addModel,
+  getModel: getModel,
   getModels: getModels,
   getModelDeals: getModelDeals,
 }

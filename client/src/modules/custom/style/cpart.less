@@ -1,10 +1,18 @@
-@import "../../common/style/util.less";
+@import "../../common/style/base.less";
 
 .c-part-tpl{
   padding: 50px 0;
   .content{
     width: 900px;
     margin: 0 auto;
+    .title{
+      font-size: 25px;
+      padding: 25px 0 15px 100px;
+    }
+    .parts{
+      font-size: 22px;
+      padding: 10px 0 10px 120px;
+    }
     &>div{
       border: 1px solid @light-grey;
     }
@@ -28,6 +36,11 @@
         }
         .btn{
           margin: 0;
+        }
+      }
+      .part-select.active{
+        .tag{
+          background: #45F563;
         }
       }
     }
@@ -61,6 +74,9 @@
       font-size: 12px;
       text-align: center;
       background: #fff;
+      &.selected{
+        box-shadow: 0px 0px 16px rgb(63,81,181);
+      }
       .img{
         display: block;
         height: 100px;
@@ -69,6 +85,7 @@
         height: 20px;
         line-height: 20px;
         color: @grey;
+        .limitText(1);
       }
       .detail.md-button{
         min-height: 20px;

@@ -4,7 +4,7 @@
       <md-input-container class="model-type" flex="35">
         <label>零部件类型</label>
         <md-select ng-model="partType">
-          <md-option ng-repeat="type in partTypes track by $index" ng-value="type" ng-selected="($index == 1) ? true:false">
+          <md-option ng-repeat="type in partTypes track by $index" ng-value="type" ng-selected="($index == 0) ? true:false">
             {{type.name}}
           </md-option>
         </md-select>

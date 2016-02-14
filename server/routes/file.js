@@ -22,4 +22,7 @@ module.exports = function(app){
 
   app.route('/file/single/*')
     .post(multer({storage: storage}).any(), fileCtrl.addFile);
+
+  app.route('/file/src/:id')
+    .get(fileCtrl.getFileSrc)
 }

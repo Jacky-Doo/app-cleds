@@ -30,6 +30,7 @@ var modelUpload = ['$scope', 'partTypeModel', 'partModel',
           alert('没有相关文档');
           return;
         }
+        console.log($scope.part.collection)
         $scope.part.collection.forEach(function(item){
           item.isShowInfo = false;
         });

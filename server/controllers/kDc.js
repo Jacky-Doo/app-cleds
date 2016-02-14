@@ -67,8 +67,8 @@ module.exports = {
   getDcs: function(req, res){
     var resData;
     var typeId = req.params.typeId;
-    var pageId = req.query.pageId;
-    var pageSize = req.query.pageSize;
+    var pageId = parseInt(req.query.pageId);
+    var pageSize = parseInt(req.query.pageSize);
     var startIndex = pageSize*(pageId-1);
     dcModel
       .find({typeId: typeId})

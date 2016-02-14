@@ -20,7 +20,6 @@ module.exports = ['$scope', 'Sprite', 'modelModel',
           return;
         } else{
           $scope.deals = res.data.modelDeals;
-          console.log($scope.deals);
         }
       });
     }

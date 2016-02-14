@@ -3,6 +3,11 @@
 module.exports = ["$http", '$q', 'Constant', '$resource', function($http, $q, Constant, $resource){
   var partTypes = [
     {
+      id: "any",
+      name: "任意",
+      attrList: []
+    },
+    {
       id: "lens",
       name: "透镜模块",
       attrList: [

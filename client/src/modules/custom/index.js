@@ -30,6 +30,7 @@ var fileSizeFilter = require('../knowledge/filter/fileSize.js');
 var partNameFilter = require('../knowledge/filter/partName.js');
 var partFilter = require('../knowledge/filter/part.js');
 var modelAttrFilter = require('../knowledge/filter/modelAttr.js');
+var selectedPartFilter = require('./filter/selectedPart.js');
 
 angular.module('custom', ['ngMaterial', 'ngResource']);
 
@@ -47,9 +48,9 @@ angular.module('custom')
           controller: homeCtrl
         })
         .state('custom.part', {
-          url: '/part',
+          url: '/part/:modelId',
           templateUrl: 'cPartTpl',
-          controller: homeCtrl
+          controller: cPartCtrl
         })
     }
   ])
@@ -71,5 +72,6 @@ angular.module('custom')
   .filter('partNameFilter', partNameFilter)
   .filter('partFilter', partFilter)
   .filter('modelAttrFilter', modelAttrFilter)
+  .filter('selectedPartFilter', selectedPartFilter)
 
 module.exports = angular.module('custom');

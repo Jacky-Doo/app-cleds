@@ -20,6 +20,13 @@ body{
   height: 0;
   clear: both;
 }
+.limitText(@line){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+}
 
 .btn-reset{
   margin: 0;
