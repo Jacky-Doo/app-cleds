@@ -10,8 +10,12 @@
       padding: 25px 0 15px 100px;
     }
     .parts{
-      font-size: 22px;
-      padding: 10px 0 10px 120px;
+      width: 100%;
+      height: 100%;
+      canvas{
+        height: 500px;
+        width: 100%;
+      }
     }
     &>div{
       border: 1px solid @light-grey;
@@ -21,6 +25,9 @@
     }
     .model-info{
       padding: 3px 18px;
+      span{
+        .limitText(1);
+      }
     }
     .model-parts{
       border-bottom: 1px solid @light-grey;
@@ -82,8 +89,8 @@
         height: 100px;
       }
       .name{
-        height: 20px;
-        line-height: 20px;
+        height: 30px;
+        line-height: 30px;
         color: @grey;
         .limitText(1);
       }

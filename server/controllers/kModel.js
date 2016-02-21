@@ -2,6 +2,7 @@
 
 var modelModel = mongoose.model('kModelModel');
 var fileModel = mongoose.model('fileModel');
+var fileFuc = require('../util/file.js');
 
 /**
  * @method: POST
@@ -24,7 +25,7 @@ var fileModel = mongoose.model('fileModel');
  *    msg: String
  * }
  */
-var addModel = function(req, res){
+exports.addModel = function(req, res){
   var modelData = req.body.model;
   var resData;
   modelData.createTime  = modelData.updateTime = (new Date()).getTime();
@@ -56,7 +57,7 @@ var addModel = function(req, res){
  *   ]
  * }
  */
-var getModels = function(req, res){
+exports.getModels = function(req, res){
   var resData;
   var typeId = req.query.typeId;
   var pageId = req.query.pageId;
@@ -107,20 +108,23 @@ var getModels = function(req, res){
   }
 };
 
-var getModel = function(req, res){
+exports.getModel = function(req, res){
   var resData;
   var modelId = req.query.modelId;
   modelModel.findById(modelId, function(err, data){
     if(data){
-      resData = {code: 200, data: {model: data}, msg: '查找成功'};
+      _addPartsImageSrc(data).then(function(data){
+        resData = {code: 200, data: {model: data}, msg: '查找成功'};
+        res.json(resData);
+      });
     } else {
       resData = {code: 404, data: null, msg: '没有实例'};
+      res.json(resData);
     }
-    res.json(resData);
   })
 }
 
-var getModelDeals = function(req, res){
+exports.getModelDeals = function(req, res){
   var resData;
   var typeId = req.query.typeId;
   var pageId = req.query.pageId;
@@ -184,11 +188,28 @@ function _modelAttrFilter(item, id, attr){
   return;
 }
 
-
-module.exports = {
-  addModel: addModel,
-  getModel: getModel,
-  getModels: getModels,
-  getModelDeals: getModelDeals,
+function _addPartsImageSrc(model){
+  return new Promise(function(resolve, reject){
+    if(model && model.partList){
+      var count = model.partList.length;
+      model.partList.forEach(function(item){
+        fileFuc.getFilePath(item.imageId).then(function(filePath){
+          item.imageSrc = filePath;
+          count--;
+          if(count == 0){
+            resolve(model);
+          }
+        }, function(err){
+          console.log(err);
+          count--;
+          if(count == 0){
+            resolve(model);
+          }
+        });
+      });
+    } else {
+      resolve(model);
+    }
+  })
 }
 

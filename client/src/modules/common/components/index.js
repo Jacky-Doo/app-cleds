@@ -13,3 +13,4 @@ require('./nav-fab/nav-fab.js');
 require('./nav-fab/nav-fab.less');
 require('./deal-card/deal-card.js');
 require('./deal-card/deal-card.less');
+require('./model-viewer/model-viewer.js');

@@ -2,6 +2,7 @@
 
 module.exports = function(){
   global._ = require('lodash');
+  global.promise = require('promise');
   global.mongoose = require('mongoose');
   global.Schema = global.mongoose.Schema;
   global.env = require('./env');  //因为env中使用了global._,不能先加载./env.js文件

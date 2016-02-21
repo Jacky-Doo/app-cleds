@@ -18,6 +18,17 @@ module.exports = function(db){
   app.set('views', path.join(root, env.viewsDir));
   app.set('view engine', env.templateEngine);
 
+  //CORS跨域解决方案
+  app.all('*', function(req, res, next){
+    if (!req.get('Origin')) return next();
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Methods', 'PUT');
+    res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+    //res.set('Access-Control-Allow-Max-Age', 3600);
+    if ('OPTIONS' == req.method) return res.sendStatus(200);
+    next();
+  });
+
   app.use(require("morgan")(env.logFormat, { stream: logger.stream })); //morgan负责将所有请求输出到logger.stream，logger为winston
   app.use(bodyParser.json()); //body-parser解析post请求体（不包括文件），生成req.body对象；express自动处理查询字符串，可在req.query对象中读取
   app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,16 +53,6 @@ module.exports = function(db){
   app.use(express.static(path.join(root, env.publicDir)));  //静态页面文件
   app.use(express.static(path.join(root, env.fileDir)));  //静态文件
 
-  //CORS跨域解决方案
-  app.all('*', function(req, res, next){
-    if (!req.get('Origin')) return next();
-    res.set('Access-Control-Allow-Origin', '*');
-    res.set('Access-Control-Allow-Methods', 'PUT');
-    res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
-    //res.set('Access-Control-Allow-Max-Age', 3600);
-    if ('OPTIONS' == req.method) return res.sendStatus(200);
-    next();
-  });
 
   //加载所有model文件，mongoose.model()函数会执行模型注册，所以除了service需要require,其它都无需require model文件
   //模型会在路由文件加载后被调用所以必须要同步加载，且在路由文件之前

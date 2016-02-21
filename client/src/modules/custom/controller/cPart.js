@@ -7,6 +7,7 @@ module.exports = ['$scope', 'Sprite', 'modelModel', 'partTypeModel', '$statePara
      */
     $scope.model; //实例对象，并不是modelModel
     $scope.partTypes = angular.merge(partTypeModel);
+    //$scope.partTypes.shift();
     $scope.partTypes.forEach(function(item){
       item.active = false;
     });
@@ -16,28 +17,25 @@ module.exports = ['$scope', 'Sprite', 'modelModel', 'partTypeModel', '$statePara
       switchPart: switchPart,
       showPartInfo: showPartInfo,
       selectPart: selectPart,
-      gg: function(){
-        alert('发送成功');
-      }
-    }
-    $scope.getFileSrc = function(id){
-      console.log(id);
-      var fileRsc = $resource(Constant.baseUrl + '/fiel/src/');
-      fileRsc.get({id: id}, function(res){
-        if(res.data && res.data.code == 200){
-          return res.data.fileSrc;
-        }
-      }), function(err){
-        console.log(err);
+      modelType: '',
+      isShowList: false,
+      go: function(){
+        console.log($scope.model);
+        $scope.view.isShowList = true;
       }
     }
     /**
      * 定义函数
      */
     //切换零部件类型选择
-    function switchPart(partTypeId, index){
+    function switchPart(partTypeId, index, partType){
+      $scope.view.isShowList = false;
       $scope.view.parts = [];
-      var flag = false; //标识有没有该类型零部件
+      var hasPartType = false; //标识有没有该类型零部件
+      if(partType){
+        hasPartType = true;
+      }
+      var hasSelected = false;
       var partList = $scope.model.partList;
       $scope.partTypes.forEach(function(item){
         item.active = false;
@@ -46,13 +44,18 @@ module.exports = ['$scope', 'Sprite', 'modelModel', 'partTypeModel', '$statePara
       partList.forEach(function(item){
         if(item.typeId == partTypeId){
           $scope.view.parts.push(item);
-          flag = true;
+          if(item.selected){
+            showPartInfo(item);
+            hasSelected = true;
+          }
+          hasPartType = true;
         }
       });
-      if(!flag){
+      if(!hasPartType){
         alert('该定制实例不需要此类型的零部件！');
-      } else {
-        showPartInfo($scope.view.parts[0]);
+      }
+      if(!hasSelected){
+        selectPart(0);
       }
     }
     //选择指定的零部件
@@ -62,6 +65,7 @@ module.exports = ['$scope', 'Sprite', 'modelModel', 'partTypeModel', '$statePara
           item.selected = false;
         });
         $scope.view.parts[index].selected = true;
+        showPartInfo($scope.view.parts[index]);
       }
     }
     //显示零部件详细信息
@@ -73,9 +77,10 @@ module.exports = ['$scope', 'Sprite', 'modelModel', 'partTypeModel', '$statePara
      */
     modelModel.getModel($stateParams.modelId).then(function(model){
       $scope.model = model;
-      console.log(model);
-      $scope.view.switchPart('chip', 1);
-      $scope.view.showPartInfo($scope.view.parts[0]);
+      $scope.view.modelType = model.typeId;
+      $scope.partTypes.forEach(function(partType){
+        switchPart(partType.id, 0, true);
+      })
     });
   }
 ]

@@ -25,4 +25,5 @@ module.exports = function(app){
 
   app.route('/file/src/:id')
     .get(fileCtrl.getFileSrc)
+
 }

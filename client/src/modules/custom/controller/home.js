@@ -8,7 +8,7 @@ module.exports = ['$scope', 'Sprite', 'modelModel',
     $scope.model = modelModel;
     $scope.deals;
     var Constant = {
-      pageSize: 2,
+      pageSize: 20,
     }
     /**
      * 定义函数
@@ -20,6 +20,7 @@ module.exports = ['$scope', 'Sprite', 'modelModel',
           return;
         } else{
           $scope.deals = res.data.modelDeals;
+          console.log($scope.deals);
         }
       });
     }

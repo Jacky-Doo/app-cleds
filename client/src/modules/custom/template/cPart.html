@@ -2,16 +2,17 @@
   <div class="c-part-tpl">
     <div class="content" layout="row">
       <div flex="75">
-        <div class="title">产品名称:{{model | modelAttrFilter:'name':'value'}}</div>
-        <div layout="column">
-          <div class="parts" flex="100" ng-repeat="item in model.partList | selectedPartFilter">{{item.typeName}}:{{item | partNameFilter}}</div>
-        </div>
+        <!--<div class="title">产品名称:{{model | modelAttrFilter:'name':'value'}}</div>-->
+        <!--<div layout="column">-->
+          <!--<div class="parts" flex="100" ng-repeat="item in model.partList | selectedPartFilter">{{item.typeName}}:{{item | partNameFilter}}</div>-->
+          <model-viewer class="parts" flex="100" model-url="view.modelType"></model-viewer>
+        <!--</div>-->
       </div>
       <div flex="25" layout="column">
         <div class="model-info" layout="column">
-          <span flex>产品名称：***LED射灯</span>
-          <span flex>价格：80元</span>
-          <span flex>描述：***LED射灯</span>
+          <span flex>产品名称：{{model | modelAttrFilter:'name':'value'}}</span>
+          <span flex>价格：{{model | modelAttrFilter:'price':'value'}}</span>
+          <span flex>描述：{{model | modelAttrFilter:'desc':'value'}}</span>
         </div>
         <div class="model-parts" layout="column">
           <div layout="row" ng-repeat="partType in partTypes track by $index" ng-class="{'active': partType.active, 'part-select': true}">
@@ -24,27 +25,44 @@
             <md-button class="groupX left" ng-click="">上一步</md-button>
             <md-button class="groupX right" ng-click="">下一步</md-button>
           </div>
-          <md-button class="c-btn md-raised md-warn" ng-click="gg">生成定制</md-button>
+          <md-button class="c-btn md-raised md-warn" ng-click="view.go()">生成定制</md-button>
         </div>
       </div>
     </div>
     <div class="part-list" layout="row" layout-align="space-around center" style="min-height: 140px;">
-      <div flex="15" layout="column" ng-repeat="part in view.parts" ng-class="{'part-item': true, 'selected': part.selected}">
-        <img class="img" ng-click="view.selectPart($index)" ng-src="{{}}" />
+      <div flex="15" layout="column" ng-repeat="part in view.parts" ng-class="{'part-item': true, 'selected': part.selected}" ng-click="view.showPartInfo(part)">
+        <img class="img" ng-click="view.selectPart($index)" ng-src="{{part.imageSrc}}" />
         <p class="name">名称：{{part | partNameFilter}}</p>
-        <md-button class="detail md-raised md-cornered md-warn" ng-click="view.showPartInfo(part)">详情</md-button>
       </div>
     </div>
     <accordion-item class="part-info">
       <accordion-title class="section-title">
         <md-button class="btn-full btn-right">
-          **零部件信息
+          零部件信息
           <svg-icon svg-id="{{Sprite.remove}}" class="btn-right-icon custom-btn-icon"></svg-icon>
         </md-button>
       </accordion-title>
       <accordion-content class="section-content">
         <div layout="row" layout-wrap layout-align="space-around center" layout-padding>
           <div flex="35" ng-repeat="item in view.part.attrList">{{item.name}}:{{item.value}}</div>
+        </div>
+      </accordion-content>
+    </accordion-item>
+
+    <accordion-item class="part-info" ng-show="view.isShowList" style="margin-top:20px;">
+      <accordion-title class="section-title">
+        <md-button class="btn-full btn-right">
+          定制列表
+          <svg-icon svg-id="{{Sprite.remove}}" class="btn-right-icon custom-btn-icon"></svg-icon>
+        </md-button>
+      </accordion-title>
+      <accordion-content class="section-content">
+        <div layout="column" ng-repeat="part in model.partList" ng-show="part.selected">
+          <span style="padding-left:20px;min-width:40px; color:blue;">{{part.typeName}}:</span>
+          <div layout="row" layout-wrap layout-align="space-around center" layout-padding>
+            <div flex="35" ng-repeat="item in part.attrList">{{item.name}}:{{item.value}}</div>
+          </div>
+          <md-divider></md-divider>
         </div>
       </accordion-content>
     </accordion-item>
