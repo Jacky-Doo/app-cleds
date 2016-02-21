@@ -29,7 +29,7 @@ module.exports = angular.module('gb.component')
           camera.lookAt(new THREE.Vector3(0,2,0));
           scene.add(camera);
           var loader = new THREE.OBJLoader();
-          loader.load('http://localhost:8011/models/obj/' + scope.modelUrl + '/装配体.obj',function(obj){
+          loader.load('/models/obj/' + scope.modelUrl + '/装配体.obj',function(obj){
             obj.traverse(function(child){
               if(child instanceof THREE.Mesh){
                 child.material.side = THREE.DoubleSide;
