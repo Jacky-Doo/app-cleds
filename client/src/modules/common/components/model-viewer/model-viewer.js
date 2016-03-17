@@ -19,7 +19,6 @@ module.exports = angular.module('gb.component')
 
         function init(){
           renderer = new THREE.WebGLRenderer({ antialias : true });
-          debugger;
           if(document.getElementsByTagName('canvas').length){
             elem[0].removeChild(document.getElementsByTagName('canvas')[0]);
           }

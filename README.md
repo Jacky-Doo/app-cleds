@@ -16,4 +16,10 @@ mongod --dbpath [数据库地址] --fork --syslog
 
 ## aliyun部署
 开发机器运行`gulp build`生成产品环境的前端资源，然后更新到github；
+
 aliyun机器`cd /www/app-cleds`，执行`git pull`更新代码，`forever start server/start.js`运行node应用；
+'forever stop server/start.js'停止运行node应用
+
+数据库管理用MongoDB客户端
+
+
