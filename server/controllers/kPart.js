@@ -1,6 +1,7 @@
 'use strict';
 
 var partModel = mongoose.model('kPartModel');
+var fileFuc = require('../util/file.js');
 
 module.exports = {
   /**
@@ -72,15 +73,17 @@ module.exports = {
             resData = {code: 404, data: null, msg: '没有零件'};
             res.json(resData);
           } else {
-            resData = {code: 200, data: {parts: data}, msg: '查找成功'};
-            if(pageId == 1){
-              partModel.count({}, function(err, count){
-                resData.data.count = count;
+            _addPartsModelSrc(data).then(function(data){
+              resData = {code: 200, data: {parts: data}, msg: '查找成功'};
+              if(pageId == 1){
+                partModel.count({}, function(err, count){
+                  resData.data.count = count;
+                  res.json(resData);
+                })
+              } else {
                 res.json(resData);
-              })
-            } else {
-              res.json(resData);
-            }
+              }
+            });
           }
         })
     } else {
@@ -93,19 +96,44 @@ module.exports = {
             resData = {code: 404, data: null, msg: '没有零件'};
             res.json(resData);
           } else {
-            resData = {code: 200, data: {parts: data}, msg: '查找成功'};
-            if(pageId == 1){
-              partModel.count({typeId: typeId}, function(err, count){
-                resData.data.count = count;
+            _addPartsModelSrc(data).then(function(data){
+              resData = {code: 200, data: {parts: data}, msg: '查找成功'};
+              if(pageId == 1){
+                partModel.count({typeId: typeId}, function(err, count){
+                  resData.data.count = count;
+                  res.json(resData);
+                })
+              } else {
                 res.json(resData);
-              })
-            } else {
-              res.json(resData);
-            }
+              }
+            });
           }
-        })
+        });
     }
-
   }
 }
 
+function _addPartsModelSrc(parts){
+  return new Promise(function(resolve, reject){
+    if(parts){
+      var count = parts.length;
+      parts.forEach(function(item){
+        fileFuc.getFilePath(item.modelId).then(function(filePath){
+          item.modelSrc = filePath;
+          count--;
+          if(count == 0){
+            resolve(parts);
+          }
+        }, function(err){
+          console.log(err);
+          count--;
+          if(count == 0){
+            resolve(parts);
+          }
+        });
+      });
+    } else {
+      resolve(parts);
+    }
+  })
+}

@@ -2,6 +2,9 @@ app-cleds
 
 ＝＝＝＝＝＝＝
 
+## Mongodb数据库启动
+mongod --dbpath [数据库地址] --fork --syslog
+
 ## gulp构建命令
 1.前端开发环境build: `gulp build:dev`
 2.前端产品环境build： `gulp build`

@@ -19,6 +19,10 @@ module.exports = angular.module('gb.component')
 
         function init(){
           renderer = new THREE.WebGLRenderer({ antialias : true });
+          debugger;
+          if(document.getElementsByTagName('canvas').length){
+            elem[0].removeChild(document.getElementsByTagName('canvas')[0]);
+          }
           elem[0].appendChild(renderer.domElement);
           renderer.setClearColor(0xcccccc);
           scene = new THREE.Scene();
@@ -29,7 +33,7 @@ module.exports = angular.module('gb.component')
           camera.lookAt(new THREE.Vector3(0,2,0));
           scene.add(camera);
           var loader = new THREE.OBJLoader();
-          loader.load('/models/obj/' + scope.modelUrl + '/装配体.obj',function(obj){
+          loader.load('/' + scope.modelUrl, function(obj){
             obj.traverse(function(child){
               if(child instanceof THREE.Mesh){
                 child.material.side = THREE.DoubleSide;

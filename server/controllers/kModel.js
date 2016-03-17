@@ -114,14 +114,22 @@ exports.getModel = function(req, res){
   modelModel.findById(modelId, function(err, data){
     if(data){
       _addPartsImageSrc(data).then(function(data){
-        resData = {code: 200, data: {model: data}, msg: '查找成功'};
-        res.json(resData);
+        fileFuc.getFilePath(data.modelId).then(function(filePath){
+          data.modelSrc = filePath;
+          resData = {code: 200, data: {model: data}, msg: '查找成功'};
+          res.json(resData);
+        }, function(err){
+          console.log(err);
+          console.log(2);
+          resData = {code: 404, data: null, msg: '没有实例'};
+          res.json(resData);
+        });
       });
     } else {
       resData = {code: 404, data: null, msg: '没有实例'};
       res.json(resData);
     }
-  })
+  });
 }
 
 exports.getModelDeals = function(req, res){

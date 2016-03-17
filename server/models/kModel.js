@@ -9,6 +9,8 @@ var kModelSchema = new Schema({
   partList: Array,  //子元素即kPartSchema
   updateTime: Number,
   createTime: Number,
+  modelSrc: String,
+  imageSrc: String
   //creator: {type: Schema.Types.ObjectId, ref: 'User'},
 });
 

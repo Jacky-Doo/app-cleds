@@ -18,6 +18,7 @@ var modelUpload = ['$scope', 'partTypeModel', 'partModel',
         }
       }
     }
+    $scope.view = {};
     var Constant = {
       pageSize: 2,
     }
@@ -41,6 +42,9 @@ var modelUpload = ['$scope', 'partTypeModel', 'partModel',
     }
     $scope.showInfo = function(index){
       $scope.part.collection[index].isShowInfo = !$scope.part.collection[index].isShowInfo;
+      if($scope.part.collection[index].isShowInfo){
+        $scope.view.partSrc = $scope.part.collection[index].modelSrc;
+      }
     }
     /**
      * 逻辑初始化

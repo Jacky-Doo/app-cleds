@@ -9,6 +9,8 @@ var kPartSchema = new Schema({
   attrList: Object, //具体自文档在前端partType.js中定义
   updateTime: Number,
   createTime: Number,
+  modelSrc: String,
+  imageSrc: String
   //creator: {type: Schema.Types.ObjectId, ref: 'User'},
 });
 

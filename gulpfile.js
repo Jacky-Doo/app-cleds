@@ -82,9 +82,9 @@ gulp.task('webpack-build', function(callback) {
       "process.env": {
         "NODE_ENV": JSON.stringify("production")
       }
-    }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin()
+    })
+    //new webpack.optimize.DedupePlugin(),
+    //new webpack.optimize.UglifyJsPlugin()
   );
   webpack(webpackConfig, function(err, stats) {
     if(err) throw new gutil.PluginError("webpack:build", err);

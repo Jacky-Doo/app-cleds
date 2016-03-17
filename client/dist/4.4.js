@@ -1,1 +1,239 @@
-webpackJsonp([4],{104:function(e,n,a){"use strict";a(105);var s=a(107),c=a(108);angular.module("screen",["ngMaterial"]),angular.module("screen").controller("screenCtrl",s).controller("screenNavCtrl",c),e.exports=angular.module("screen")},105:function(e,n,a){var s=a(106);"string"==typeof s&&(s=[[e.id,s,""]]);a(13)(s,{});s.locals&&(e.exports=s.locals)},106:function(e,n,a){n=e.exports=a(11)(),n.push([e.id,".screen-tpl .screen-nav{margin:50px 0 50px 30px;font-size:12px;color:#858585;max-width:230px}.screen-tpl .screen-nav .title{padding-left:8px;font-size:16px;color:#333}.screen-tpl .screen-nav .kinds md-input-container{padding-bottom:0}.screen-tpl .screen-nav .kinds md-input-container md-select-value{font-size:24px;text-align:center;color:#333}.screen-tpl .screen-nav .colors button{margin:4px 6px}.screen-tpl .screen-nav .powers button{margin:0 8px}.screen-tpl .content .info{margin:50px 0 5px 100px}.screen-tpl .content .info .title{font-size:26px;color:#333}.screen-tpl .content .info .title .params{text-decoration:underline;color:green}.slected{background:#ff0!important;border:#ff0!important}",""])},107:function(e,n){"use strict";e.exports=["$scope",function(e){}]},108:function(e,n){"use strict";var a=["$scope","Sprite",function(e,n){e.v="nihao",e.screen={};var a=e.screen;a.site={value:0,name:""},a.sites=[{name:"室内",value:0},{name:"室外",value:1}],e.$watch("screen.site.value",function(e,n,s){a.sites.forEach(function(e){e.value==a.site.value&&(a.site.name=e.name)})}),a.kind={value:0,name:"",isCollapse:!1,svg:n.remove},a.kinds=[{name:"筒灯",value:0},{name:"球泡灯",value:1},{name:"栅格灯",value:2}],e.$watch("screen.kind.isCollapse",function(e,a,s){e?s.screen.kind.svg=n.add:s.screen.kind.svg=n.remove}),e.$watch("screen.kind.value",function(e,n,s){a.kinds.forEach(function(e){e.value==a.kind.value&&(a.kind.name=e.name)})}),a.color={value:0,isCollapse:!1,svg:n.remove},a.colors=[{name:"className1",value:0},{name:"className2",value:1},{name:"className2",value:2},{name:"className2",value:3},{name:"className2",value:4},{name:"className2",value:2},{name:"className2",value:3},{name:"className2",value:4}],e.$watch("screen.color.isCollapse",function(e,a,s){e?s.screen.color.svg=n.add:s.screen.color.svg=n.remove}),e.$watch("screen.color.value",function(e,n,s){a.colors.forEach(function(e){e.value==a.color.value&&(a.color.name=e.name)})}),a.power={value:0,isCollapse:!1,svg:n.remove},a.powers=[{name:"1W~3W",value:0},{name:"3W~5W",value:1},{name:"5W~10W",value:2},{name:"10W~20W",value:3},{name:"20W~50W",value:4},{name:"50W以上",value:5}],e.$watch("screen.power.isCollapse",function(e,a,s){e?s.screen.power.svg=n.add:s.screen.power.svg=n.remove}),e.$watch("screen.power.value",function(e,n,s){a.powers.forEach(function(e){e.value==a.power.value&&(a.power.name=e.name)})}),a.price={value:0,isCollapse:!1,svg:n.remove},a.prices=[{name:"50元以下",value:0},{name:"50~100元",value:1},{name:"100～200元",value:2},{name:"200元以上",value:3}],e.$watch("screen.price.isCollapse",function(e,a,s){e?s.screen.price.svg=n.add:s.screen.price.svg=n.remove}),e.$watch("screen.price.value",function(e,n,s){a.prices.forEach(function(e){e.value==a.price.value&&(a.price.name=e.name)})})}];e.exports=a}});
+webpackJsonp([4],{
+
+/***/ 104:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	/**
+	 * 样式
+	 */
+	__webpack_require__(105);
+	/**
+	 * 模板
+	 */
+
+	/**
+	 * 控制器
+	 */
+	var screenCtrl = __webpack_require__(107);
+	var screenNavCtrl = __webpack_require__(108);
+
+	angular.module('screen', ['ngMaterial']);
+
+	angular.module('screen')
+	  .controller('screenCtrl', screenCtrl)
+	  .controller('screenNavCtrl', screenNavCtrl)
+
+	module.exports = angular.module('screen');
+
+/***/ },
+
+/***/ 105:
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(106);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(13)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/autoprefixer-loader/index.js!./../../../../../node_modules/less-loader/index.js!./screen.less", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/autoprefixer-loader/index.js!./../../../../../node_modules/less-loader/index.js!./screen.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+
+/***/ 106:
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(11)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".screen-tpl .screen-nav {\n  margin: 50px 0 50px 30px;\n  font-size: 12px;\n  color: #858585;\n  max-width: 230px;\n}\n.screen-tpl .screen-nav .title {\n  padding-left: 8px;\n  font-size: 16px;\n  color: #333;\n}\n.screen-tpl .screen-nav .kinds md-input-container {\n  padding-bottom: 0;\n}\n.screen-tpl .screen-nav .kinds md-input-container md-select-value {\n  font-size: 24px;\n  text-align: center;\n  color: #333;\n}\n.screen-tpl .screen-nav .colors button {\n  margin: 4px 6px;\n}\n.screen-tpl .screen-nav .powers button {\n  margin: 0 8px;\n}\n.screen-tpl .content .info {\n  margin: 50px 0 5px 100px;\n}\n.screen-tpl .content .info .title {\n  font-size: 26px;\n  color: #333;\n}\n.screen-tpl .content .info .title .params {\n  text-decoration: underline;\n  color: green;\n}\n.slected {\n  background: yellow !important;\n  border: yellow !important;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+
+/***/ 107:
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = ['$scope',
+	  function($scope){
+
+	  }
+	]
+
+
+/***/ },
+
+/***/ 108:
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var screenNavCtrl = ['$scope', 'Sprite',
+	  function($scope, Sprite){
+	    $scope.v = 'nihao';
+	    $scope.screen = {};
+	    var screen = $scope.screen;
+
+	    screen.site = {
+	      value: 0,
+	      name: ''
+	    };
+	    screen.sites = [
+	      {'name': '室内', 'value': 0},
+	      {'name': '室外', 'value': 1}
+	    ];
+	    $scope.$watch('screen.site.value', function(newValue, oldValue, scope){
+	      screen.sites.forEach(function(item){
+	        if(item.value == screen.site.value){
+	          screen.site.name = item.name;
+	        }
+	      })
+	    });
+	    /**
+	     * $scope.screen.kind && $scope.screen.kinds
+	     */
+	    screen.kind = {
+	      value: 0,
+	      name: '',
+	      isCollapse: false,
+	      svg: Sprite.remove
+	    }
+	    screen.kinds = [
+	      {'name': '筒灯', 'value': 0},
+	      {'name': '球泡灯', 'value': 1},
+	      {'name': '栅格灯', 'value': 2},
+	    ]
+	    $scope.$watch('screen.kind.isCollapse', function(newValue, oldValue, scope){
+	      if(newValue){
+	        scope.screen.kind.svg = Sprite.add;
+	      } else {
+	        scope.screen.kind.svg = Sprite.remove;
+	      }
+	    });
+	    $scope.$watch('screen.kind.value', function(newValue, oldValue, scope){
+	      screen.kinds.forEach(function(item){
+	        if(item.value == screen.kind.value){
+	          screen.kind.name = item.name;
+	        }
+	      })
+	    });
+	    /**
+	     * $scope.screen.color && $scope.screen.colors
+	     */
+	    screen.color = {
+	      value: 0,
+	      isCollapse: false,
+	      svg: Sprite.remove
+	    };
+	    screen.colors = [
+	      {'name': 'className1', value: 0},
+	      {'name': 'className2', value: 1},
+	      {'name': 'className2', value: 2},
+	      {'name': 'className2', value: 3},
+	      {'name': 'className2', value: 4},
+	      {'name': 'className2', value: 2},
+	      {'name': 'className2', value: 3},
+	      {'name': 'className2', value: 4},
+	    ];
+	    $scope.$watch('screen.color.isCollapse', function(newValue, oldValue, scope){
+	      if(newValue){
+	        scope.screen.color.svg = Sprite.add;
+	      } else {
+	        scope.screen.color.svg = Sprite.remove;
+	      }
+	    });
+	    $scope.$watch('screen.color.value', function(newValue, oldValue, scope){
+	      screen.colors.forEach(function(item){
+	        if(item.value == screen.color.value){
+	          screen.color.name = item.name;
+	        }
+	      })
+	    });
+	    /**
+	     * $scope.screen.power && $scope.screen.powers
+	     */
+	    screen.power = {
+	      value: 0,
+	      isCollapse: false,
+	      svg: Sprite.remove
+	    };
+	    screen.powers =[
+	      {'name': '1W~3W', value: 0},
+	      {'name': '3W~5W', value: 1},
+	      {'name': '5W~10W', value: 2},
+	      {'name': '10W~20W', value: 3},
+	      {'name': '20W~50W', value: 4},
+	      {'name': '50W以上', value: 5}
+	    ]
+	    $scope.$watch('screen.power.isCollapse', function(newValue, oldValue, scope){
+	      if(newValue){
+	        scope.screen.power.svg = Sprite.add;
+	      } else {
+	        scope.screen.power.svg = Sprite.remove;
+	      }
+	    });
+	    $scope.$watch('screen.power.value', function(newValue, oldValue, scope){
+	      screen.powers.forEach(function(item){
+	        if(item.value == screen.power.value){
+	          screen.power.name = item.name;
+	        }
+	      })
+	    });
+	    /**
+	     * $scope.screen.price && $scope.screen.prices
+	     */
+	    screen.price = {
+	      value: 0,
+	      isCollapse: false,
+	      svg: Sprite.remove
+	    };
+	    screen.prices =[
+	      {'name': '50元以下', value: 0},
+	      {'name': '50~100元', value: 1},
+	      {'name': '100～200元', value: 2},
+	      {'name': '200元以上', value: 3}
+	    ]
+	    $scope.$watch('screen.price.isCollapse', function(newValue, oldValue, scope){
+	      if(newValue){
+	        scope.screen.price.svg = Sprite.add;
+	      } else {
+	        scope.screen.price.svg = Sprite.remove;
+	      }
+	    });
+	    $scope.$watch('screen.price.value', function(newValue, oldValue, scope){
+	      screen.prices.forEach(function(item){
+	        if(item.value == screen.price.value){
+	          screen.price.name = item.name;
+	        }
+	      })
+	    });
+	  }
+	]
+
+	module.exports = screenNavCtrl;
+
+
+/***/ }
+
+});
