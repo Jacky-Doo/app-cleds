@@ -34,6 +34,7 @@ var modelUpload = ['$scope', 'partTypeModel', 'partModel',
         console.log($scope.part.collection)
         $scope.part.collection.forEach(function(item){
           item.isShowInfo = false;
+          item.partViewerSrc = '/f2e/html/three-viewer.html?modelSrc=' + item.modelSrc;
         });
         if(res.data.count){
           $scope.pagination.total = Math.ceil(res.data.count/Constant.pageSize);
@@ -42,6 +43,7 @@ var modelUpload = ['$scope', 'partTypeModel', 'partModel',
     }
     $scope.showInfo = function(index){
       $scope.part.collection[index].isShowInfo = !$scope.part.collection[index].isShowInfo;
+      //下面代码没有用,仅保留
       if($scope.part.collection[index].isShowInfo){
         $scope.view.partSrc = '/f2e/html/three-viewer.html?modelSrc=' + $scope.part.collection[index].modelSrc;
       }
