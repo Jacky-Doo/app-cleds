@@ -1269,7 +1269,7 @@
 	            elem[0].removeChild(document.getElementsByTagName('canvas')[0]);
 	          }
 	          elem[0].appendChild(renderer.domElement);
-	          renderer.setClearColor(0xcccccc);
+	          renderer.setClearColor(0xfffffff);
 	          scene = new THREE.Scene();
 
 	          camera = new THREE.OrthographicCamera(-150,150,112.5,-112.5,-100,10000);
@@ -1281,14 +1281,29 @@
 	          loader.load('/' + scope.modelUrl, function(obj){
 	            obj.traverse(function(child){
 	              if(child instanceof THREE.Mesh){
-	                child.material.side = THREE.DoubleSide;
+	                //child.material.side = THREE.DoubleSide;
+	                child.material = new THREE.MeshPhongMaterial({
+	                  color: "#ffffff",
+	                  emissive:"#555555",
+	                  shininess:80,
+	                  specular:0xeeeeee,
+	                  shading:THREE.SmoothShading
+	                })
 	              }
 	            });
 	            mesh = obj;
 	            scene.add(obj);
-	            var light = new THREE.DirectionalLight(0xffffff);
-	            light.position.set(20,10,5);
-	            scene.add(light);
+	            var light1 = new THREE.DirectionalLight(0xffffff);
+	            light1.position.set(20,10,5);
+	            scene.add(light1);
+	            var light2 = new THREE.DirectionalLight(0xffffff);
+	            light2.position.set(200,100,50);
+	            scene.add(light2);
+	            var light3 = new THREE.DirectionalLight(0xffffff);
+	            light3.position.set(2000,1000,500);
+	            scene.add(light3);
+	            var ambientLight = new THREE.AmbientLight(0x222222);
+	            scene.add(ambientLight);
 	            setInterval(draw,20);
 	          });
 	        }

@@ -5,7 +5,8 @@
         <!--<div class="title">产品名称:{{model | modelAttrFilter:'name':'value'}}</div>-->
         <!--<div layout="column">-->
           <!--<div class="parts" flex="100" ng-repeat="item in model.partList | selectedPartFilter">{{item.typeName}}:{{item | partNameFilter}}</div>-->
-          <model-viewer class="parts" flex="100" model-url="view.modelSrc"></model-viewer>
+          <!--<model-viewer class="parts" flex="100" model-url="view.modelSrc"></model-viewer>-->
+        <iframe  class="parts" flex="100" ng-src={{view.iframeSrc}}></iframe>
         <!--</div>-->
       </div>
       <div flex="25" layout="column">

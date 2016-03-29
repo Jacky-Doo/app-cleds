@@ -52,6 +52,7 @@ module.exports = function(db){
   app.disable('x-powered-by');
   app.use(express.static(path.join(root, env.publicDir)));  //静态页面文件
   app.use(express.static(path.join(root, env.fileDir)));  //静态文件
+  app.use(express.static(path.join(root, '../')));  //静态页面文件
 
 
   //加载所有model文件，mongoose.model()函数会执行模型注册，所以除了service需要require,其它都无需require model文件

@@ -77,7 +77,7 @@ module.exports = ['$scope', 'Sprite', 'modelModel', 'partTypeModel', '$statePara
      */
     modelModel.getModel($stateParams.modelId).then(function(model){
       $scope.model = model;
-      $scope.view.modelSrc = model.modelSrc;
+      $scope.view.iframeSrc = '/f2e/html/three-viewer.html?modelSrc=' + model.modelSrc;
       $scope.partTypes.forEach(function(partType){
         switchPart(partType.id, 0, true);
       })

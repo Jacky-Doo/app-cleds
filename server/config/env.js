@@ -9,6 +9,7 @@ var all = {
   templateEngine: 'hbs',
   viewsDir: 'views',
   publicDir: '../client/dist',
+  f2eDir: '../f2e',
   fileDir: '../file/',
   routesPath: 'routes/*.js',
   modelsPath: 'models/*.js',
