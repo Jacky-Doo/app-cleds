@@ -43,7 +43,7 @@ var modelUpload = ['$scope', 'partTypeModel', 'partModel',
     $scope.showInfo = function(index){
       $scope.part.collection[index].isShowInfo = !$scope.part.collection[index].isShowInfo;
       if($scope.part.collection[index].isShowInfo){
-        $scope.view.partSrc = $scope.part.collection[index].modelSrc;
+        $scope.view.partSrc = '/f2e/html/three-viewer.html?modelSrc=' + $scope.part.collection[index].modelSrc;
       }
     }
     /**

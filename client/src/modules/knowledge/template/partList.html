@@ -32,6 +32,7 @@
           <md-divider></md-divider>
           <div layout="row" layout-wrap class="part-info" layout-align="space-around center" ng-show="item.isShowInfo">
             <div flex="35" class="part-attr" ng-repeat="attr in item.attrList">{{attr.name}}:{{attr.value}}</div>
+            <iframe ng-src={{view.partSrc}}  flex="35" class="part-attr" frameborder="0"></iframe>
             <md-divider flex="100"></md-divider>
           </div>
         </div>
@@ -43,5 +44,5 @@
       </pagination>
     </div>
   </div>
-  <model-viewer class="part-view" model-url="view.partSrc"></model-viewer>
+  <!--<model-viewer class="part-view" model-url="view.partSrc"></model-viewer>-->
 </script>
